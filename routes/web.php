@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DropshipController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +17,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
+});
+
+Route::post('login', [AuthController::class, 'login'])->name('login');
+
+Route::middleware(['auth'])->group(function () {
+
+    Route::prefix('dashboard')->name('dashboard.')->group(function () {
+        Route::get('', [DashboardController::class, 'index'])->name('index');
+    });
+
+    Route::prefix('dropshipper')->name('dropshipper.')->group(function () {
+        Route::get('', [DropshipController::class, 'index'])->name('index');
+        Route::get('data', [DropshipController::class, 'data'])->name('data');
+    });
+
 });
