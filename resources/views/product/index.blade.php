@@ -22,7 +22,7 @@
             <!--begin::Info-->
             <div class="d-flex align-items-center flex-wrap mr-2">
                 <!--begin::Page Title-->
-                <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Dropshippers</h5>
+                <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Products</h5>
                 <!--end::Page Title-->
                 <!--begin::Actions-->
                 <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-4 bg-gray-200"></div>
@@ -45,7 +45,7 @@
             <div class="card card-custom">
                 <div class="card-header flex-wrap border-0 pt-6 pb-0">
                     <div class="card-title">
-                        <h3 class="card-label">Dropshipper Lists
+                        <h3 class="card-label">Product Lists
                             <span class="d-block text-muted pt-2 font-size-sm"></span>
                         </h3>
                     </div>
@@ -53,7 +53,7 @@
                         <!--begin::Dropdown-->
                         <!--end::Dropdown-->
                         <!--begin::Button-->
-                        <a href="{{route('dropshipper.create')}}" class="btn btn-primary font-weight-bolder">
+                        <a href="{{ route('product.create') }}" class="btn btn-primary font-weight-bolder">
                             <span class="svg-icon svg-icon-md">
                                 <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Flatten.svg-->
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -64,12 +64,12 @@
                                     </g>
                                 </svg>
                                 <!--end::Svg Icon-->
-                            </span>Add New Dropshipper</a>
+                            </span>Add New Product</a>
                         <!--end::Button-->
                     </div>
                 </div>
                 <div class="card-body">
-                {!! $dropshipper->table() !!}
+                {!! $product->table() !!}
                 </div>
             </div>
             <!--end::Card-->
@@ -82,5 +82,5 @@
 @endsection
 
 @push('scripts')
-    {!! $dropshipper->scripts() !!}
+    {!! $product->scripts() !!}
 @endpush

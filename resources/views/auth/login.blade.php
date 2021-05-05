@@ -16,7 +16,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	<!--begin::Head-->
 	<head><base href="../../../">
 		<meta charset="utf-8" />
-		<title>Login Page 2 | Keenthemes</title>
+		<title>Dropship System</title>
 		<meta name="description" content="Login page example" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 		<link rel="canonical" href="https://keenthemes.com/metronic" />
@@ -52,7 +52,7 @@ License: You must have a valid license purchased only from themeforest(the above
 					<div class="d-flex flex-column-fluid flex-column justify-content-between py-9 px-7 py-lg-13 px-lg-35">
 						<!--begin::Logo-->
 						<a href="#" class="text-center pt-2">
-							<img src="assets/media/logos/logo.png" class="max-h-75px" alt="" />
+							<img src="images/logo.png" class="max-h-75px" alt="" />
 						</a>
 						<!--end::Logo-->
 						<!--begin::Aside body-->
@@ -193,8 +193,8 @@ License: You must have a valid license purchased only from themeforest(the above
 					<!--begin::Title-->
 					<div class="d-flex flex-column justify-content-center text-center pt-lg-40 pt-md-5 pt-sm-5 px-lg-0 pt-5 px-7">
 						<h3 class="display4 font-weight-bolder my-7 text-dark" style="color: #986923;">Dropship System</h3>
-						<p class="font-weight-bolder font-size-h2-md font-size-lg text-dark opacity-70">LGCMYTECH
-						<br />Enterprise</p>
+						<p class="font-weight-bolder font-size-h2-md font-size-lg text-dark opacity-70">by:
+						<br />Afifah Syazwani</p>
 					</div>
 					<!--end::Title-->
 					<!--begin::Image-->
