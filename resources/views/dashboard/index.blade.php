@@ -29,7 +29,7 @@
                                 </a>
                             </div>
                             <div class="my-lg-0 my-3">
-                               
+
                                 <a href="#" class="btn btn-lg btn-info font-weight-bolder text-uppercase">Edit</a>
                             </div>
                         </div>
@@ -40,10 +40,16 @@
                                 <div class="d-flex flex-wrap mb-4">
                                     <a href="#" class="text-dark-50 text-hover-primary font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
                                         <i class="flaticon2-new-email mr-2 font-size-lg"></i>{{Auth::user()->email}}</a>
+                                    <a href="#" class="text-dark-50 text-hover-primary font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
+                                        <i class="flaticon2-phone mr-2 font-size-lg"></i>{{Auth::user()->phone_no}}</a>
+                                    <a href="#" class="text-dark-50 text-hover-primary font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
+                                        <i class="flaticon2-user mr-2 font-size-lg"></i>{{Auth::user()->nric}}</a>
+                                    <a href="#" class="text-dark-50 text-hover-primary font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
+                                        <i class="flaticon2-rocket mr-2 font-size-lg"></i>{{Auth::user()->status}}</a>
                                 </div>
                             </div>
                             <div class="d-flex align-items-center w-25 flex-fill float-right mt-lg-12 mt-8">
-                               
+
                             </div>
                         </div>
                         <!--end::Content-->
@@ -54,7 +60,7 @@
                 <div class="separator separator-solid"></div>
                 <!--begin::Items-->
                 <div class="d-flex align-items-center flex-wrap mt-8">
-                   
+
                 </div>
                 <!--begin::Items-->
             </div>
