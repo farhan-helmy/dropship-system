@@ -30,7 +30,7 @@
                             </div>
                             <div class="my-lg-0 my-3">
 
-                                <a href="#" class="btn btn-lg btn-info font-weight-bolder text-uppercase">Edit</a>
+                                
                             </div>
                         </div>
                         <!--end::Title-->
