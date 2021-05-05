@@ -51,4 +51,5 @@ Route::middleware(['auth'])->group(function () {
         Route::get('show/{product}', [ProductController::class, 'show'])->name('show');
     });
 
+    Route::post('/logout', [AuthController::class, 'destroy'])->name('logout');
 });
