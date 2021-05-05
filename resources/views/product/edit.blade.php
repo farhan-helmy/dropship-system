@@ -61,28 +61,28 @@
                             </div>
                         </div>
                     </div> -->
-                    <div class="form-group">
-                        <label>Product name <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" placeholder="Enter user name" name="name" value="{{$product->name}}" />
+                    <div class="mt-6">
+                        <div class="text-muted mb-4 font-weight-bolder font-size-lg">Product Info</div>
+                        <div class="form-group">
+                            <label class="font-weight-bolder">Name</label>
+                            <input type="text" class="form-control form-control-solid form-control-lg" placeholder="Enter user name" name="name" value="{{$product->name}}" />
+                        </div>
+                        <div class="form-group">
+                            <label class="font-weight-bolder">Stock</label>
+                            <input type="number" class="form-control form-control-solid form-control-lg" placeholder="Enter stock" name="stock" value="{{$product->stock}}" />
+                        </div>
+                        <div class="form-group">
+                            <label class="font-weight-bolder">Price (MYR)</label>
+                            <input type="number" class="form-control form-control-solid form-control-lg" placeholder="Enter price" name="price" value="{{$product->price}}" />
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleTextarea" class="font-weight-bolder">Description</label>
+                            <textarea type="text" class="form-control form-control-solid form-control-lg" placeholder="Enter description" name="description">{{$product->description}} </textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary font-weight-bolder mr-2 px-8">Save</button>
+                        <button type="reset" class="btn btn-clear font-weight-bolder text-muted px-8">Discard</button>
                     </div>
-                    <div class="form-group">
-                        <label>Stock <span class="text-danger">*</span></label>
-                        <input type="number" class="form-control" placeholder="Enter stock" name="stock" value="{{$product->stock}}" />
-                    </div>
-                    <div class="form-group">
-                        <label>Price <span class="text-danger">*</span></label>
-                        <input type="number" class="form-control" placeholder="Enter price" name="price" value="{{$product->price}}" />
-                    </div>
-                    <div class="form-group">
-                        <label>Description <span class="text-danger">*</span></label>
-                        <textarea type="text" class="form-control" placeholder="Enter description" name="description">{{$product->description}} </textarea>
-                    </div>
-
                 </div>
-                <div class="card-footer">
-                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                </div>
-
             </form>
 
             <!--end::Form-->

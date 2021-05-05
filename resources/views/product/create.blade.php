@@ -61,28 +61,31 @@
                             </div>
                         </div>
                     </div> -->
-                    <div class="form-group">
-                        <label>Product name <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" placeholder="Enter user name" name="name" />
+                    <div class="mt-6">
+                        <div class="text-muted mb-4 font-weight-bolder font-size-lg">Product Info</div>
+                        <!--begin::Input-->
+                        <div class="form-group mb-8">
+                            <label class="font-weight-bolder">Name</label>
+                            <input type="text" class="form-control form-control-solid form-control-lg" placeholder="" name="name" />
+                        </div>
+                        <div class="form-group mb-8">
+                            <label class="font-weight-bolder">Stock</label>
+                            <input type="number" class="form-control form-control-solid form-control-lg" placeholder="" name="stock" />
+                        </div>
+                        <div class="form-group mb-8">
+                            <label for="exampleTextarea" class="font-weight-bolder">Description</label>
+                            <textarea class="form-control form-control-solid form-control-lg" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="font-weight-bolder">Price (MYR)</label>
+                            <input type="text" class="form-control form-control-solid form-control-lg" placeholder=""  name="price" />
+                        </div>
+                        <!--begin::Color-->
+                        <!--end::Color-->
+                        <button type="submit" class="btn btn-primary font-weight-bolder mr-2 px-8">Save</button>
+                        <button type="reset" class="btn btn-clear font-weight-bolder text-muted px-8">Discard</button>
+                        <!--end::Input-->
                     </div>
-                    <div class="form-group">
-                        <label>Stock <span class="text-danger">*</span></label>
-                        <input type="number" class="form-control" placeholder="Enter stock" name="stock" />
-                    </div>
-                    <div class="form-group">
-                        <label>Price <span class="text-danger">*</span></label>
-                        <input type="number" class="form-control" placeholder="Enter price" name="price" />
-                    </div>
-                    <div class="form-group">
-                        <label>Description <span class="text-danger">*</span></label>
-                        <textarea type="text" class="form-control" placeholder="Enter description" name="description"> </textarea>
-                    </div>
-
-                </div>
-                <div class="card-footer">
-                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                </div>
-
             </form>
 
             <!--end::Form-->
