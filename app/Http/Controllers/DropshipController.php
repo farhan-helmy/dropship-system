@@ -96,7 +96,7 @@ class DropshipController extends Controller
      */
     public function show(User $user)
     {
-        return view('dropshipper.show',compact('user'));
+        return view('dropshipper.show', compact('user'));
     }
 
     /**
@@ -120,6 +120,9 @@ class DropshipController extends Controller
     public function update(Request $request, User $user)
     {
         $user->update($request->all());
+
+        $user->password = Hash::make($request->password);
+        $user->save();
 
         return redirect()->route('dropshipper.index')
             ->with('success', 'Dropshipper updated successfully!');
