@@ -3,8 +3,8 @@
     <div class="brand flex-column-auto" id="kt_brand">
         <!--begin::Logo-->
         <a href="index.html" class="brand-logo">
-            <img alt="Logo" src="{{ asset('images/logo.png') }}" style="width:50px;height:50px;"/>
-            
+            <img alt="Logo" src="{{ asset('images/logo.png') }}" style="width:50px;height:50px;" />
+
         </a>
         <!--end::Logo-->
         <!--begin::Toggle-->
@@ -29,9 +29,10 @@
         <!--begin::Menu Container-->
         <div id="kt_aside_menu" class="aside-menu my-4" data-menu-vertical="1" data-menu-scroll="1" data-menu-dropdown-timeout="500">
             <!--begin::Menu Nav-->
+            @role('boss')
             <ul class="menu-nav">
-                <li class="menu-item {{request()->routeIs('dashboard.*') ? 'menu-item-active' : ''}}" aria-haspopup="true">
-                    <a href="{{ route('dashboard.index') }}" class="menu-link">
+                <li class="menu-item {{request()->routeIs('admin.dashboard.*') ? 'menu-item-active' : ''}}" aria-haspopup="true">
+                    <a href="{{ route('admin.dashboard.index') }}" class="menu-link">
                         <span class="menu-text">My Account</span>
                     </a>
                 </li>
@@ -40,13 +41,13 @@
                         <span class="menu-text">My Orders</span>
                     </a>
                 </li>
-                <li class="menu-item {{request()->routeIs('product.*') ? 'menu-item-active' : ''}}" aria-haspopup="true">
-                    <a href="{{ route('product.index') }}" class="menu-link">
+                <li class="menu-item {{request()->routeIs('admin.product.*') ? 'menu-item-active' : ''}}" aria-haspopup="true">
+                    <a href="{{ route('admin.product.index') }}" class="menu-link">
                         <span class="menu-text">Products</span>
                     </a>
                 </li>
-                <li class="menu-item {{request()->routeIs('dropshipper.*') ? 'menu-item-active' : ''}}" aria-haspopup="true">
-                    <a href="{{ route('dropshipper.index') }}" class="menu-link">
+                <li class="menu-item {{request()->routeIs('admin.dropshipper.*') ? 'menu-item-active' : ''}}" aria-haspopup="true">
+                    <a href="{{ route('admin.dropshipper.index') }}" class="menu-link">
                         <span class="menu-text">Dropshipper</span>
                     </a>
                 </li>
@@ -56,6 +57,40 @@
                     </a>
                 </li>
             </ul>
+            @endrole
+            @role('ds')
+
+            <ul class="menu-nav">
+                <li class="menu-item {{request()->routeIs('ds.dashboard.*') ? 'menu-item-active' : ''}}" aria-haspopup="true">
+                    <a href="{{ route('ds.dashboard.index') }}" class="menu-link">
+                        <span class="menu-text">My Account</span>
+                    </a>
+                </li>
+                <li class="menu-item" aria-haspopup="true">
+                    <a href="" class="menu-link">
+                        <span class="menu-text">My Orders</span>
+                    </a>
+                </li>
+                <li class="menu-item {{request()->routeIs('ds.product.*') ? 'menu-item-active' : ''}}" aria-haspopup="true">
+                    <a href="{{ route('ds.product.index') }}" class="menu-link">
+                        <span class="menu-text">Catalogue</span>
+                    </a>
+                </li>
+                <li class="menu-item " aria-haspopup="true" data-menu-toggle="hover">
+                    <a href="javascript:;" class="menu-link ">
+                        <span class="menu-text">Cart</span>
+                        @if(Session::has('cart'))
+                        @if(request()->routeIs('ds.product.*'))
+                        <span class="menu-label">
+                            <span class="label label-rounded label-primary">{{ $data['totalQty'] }}</span>
+                        </span>
+                        @endif
+                        @endif
+                    </a>
+
+                </li>
+            </ul>
+            @endrole
             <!--end::Menu Nav-->
         </div>
         <!--end::Menu Container-->

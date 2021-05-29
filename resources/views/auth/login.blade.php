@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <!--
 Template Name: Metronic - Bootstrap 4 HTML, React, Angular 11 & VueJS Admin Dashboard Theme
@@ -60,6 +59,7 @@ License: You must have a valid license purchased only from themeforest(the above
 							<!--begin::Signin-->
 							<div class="login-form login-signin py-11">
 								<!--begin::Form-->
+							
 								<form class="form" action="{{ route('login') }}" method="POST">
 								@method('POST')
 								@csrf
@@ -91,6 +91,7 @@ License: You must have a valid license purchased only from themeforest(the above
 									</div>
 									<!--end::Action-->
 								</form>
+								
 								<!--end::Form-->
 							</div>
 							<!--end::Signin-->

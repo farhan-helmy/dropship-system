@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <div class="card-toolbar">
-                    <a href="{{route('product.index')}}" class="btn btn-primary font-weight-bolder">
+                    <a href="{{route('admin.product.index')}}" class="btn btn-primary font-weight-bolder">
                         <span class="svg-icon svg-icon-md">
                             <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Flatten.svg-->
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -49,7 +49,7 @@
 
 
             <!--begin::Form-->
-            <form action="{{ route('product.update', ['product' => $product->id]) }}" method="POST">
+            <form action="{{ route('admin.product.update', ['product' => $product->id]) }}" method="POST" enctype="multipart/form-data">
                 @method('PUT')
                 @csrf
                 <div class="card-body">
@@ -78,6 +78,23 @@
                         <div class="form-group">
                             <label for="exampleTextarea" class="font-weight-bolder">Description</label>
                             <textarea type="text" class="form-control form-control-solid form-control-lg" placeholder="Enter description" name="description">{{$product->description}} </textarea>
+                        </div>
+                        <div class="form-group">
+                            <div class="image-input image-input-outline" id="kt_image_1">
+                                <label class="font-weight-bolder">Product Image</label>
+                                <div></div>
+                                <img class="image-input-wrapper" src="{{ asset($product->image) }}" >
+
+                                <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
+                                    <i class="fa fa-pen icon-sm text-muted"></i>
+                                    <input type="file" name="product_image" id="product_image" />
+                                    <input type="hidden" name="profile_avatar_remove" />
+                                </label>
+
+                                <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
+                                    <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                </span>
+                            </div>
                         </div>
                         <button type="submit" class="btn btn-primary font-weight-bolder mr-2 px-8">Save</button>
                         <button type="reset" class="btn btn-clear font-weight-bolder text-muted px-8">Discard</button>

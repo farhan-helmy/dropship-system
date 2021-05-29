@@ -58,9 +58,9 @@
                         </div>
                         <!--end::Contact-->
                         @if($user->status == 'Active')
-                        <a href="{{route('dropshipper.deactivate', ['user' => $user->id])}}" class="btn btn-light-danger font-weight-bold py-3 px-6 mb-2 text-center btn-block">Deactivate</a>
+                        <a href="{{route('admin.dropshipper.deactivate', ['user' => $user->id])}}" class="btn btn-light-danger font-weight-bold py-3 px-6 mb-2 text-center btn-block">Deactivate</a>
                         @else
-                        <a href="{{route('dropshipper.activate', ['user' => $user->id])}}" class="btn btn-light-success font-weight-bold py-3 px-6 mb-2 text-center btn-block">Activate</a>
+                        <a href="{{route('admin.dropshipper.activate', ['user' => $user->id])}}" class="btn btn-light-success font-weight-bold py-3 px-6 mb-2 text-center btn-block">Activate</a>
                         @endif
                     </div>
                     <!--end::Body-->

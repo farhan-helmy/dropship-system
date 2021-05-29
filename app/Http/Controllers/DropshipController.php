@@ -36,7 +36,7 @@ class DropshipController extends Controller
                 'footer'         => '',
             ]
         ])
-            ->ajax(route('dropshipper.data'));
+            ->ajax(route('admin.dropshipper.data'));
 
         return view('dropshipper.index', compact('dropshipper'));
     }
@@ -84,7 +84,7 @@ class DropshipController extends Controller
 
         $user->save();
 
-        return redirect()->route('dropshipper.index')
+        return redirect()->route('admin.dropshipper.index')
             ->with('success', 'Dropshipper registered successfully!');
     }
 
@@ -96,7 +96,7 @@ class DropshipController extends Controller
      */
     public function show(User $user)
     {
-        return view('dropshipper.show', compact('user'));
+        return view('admin.dropshipper.show', compact('user'));
     }
 
     /**
@@ -124,7 +124,7 @@ class DropshipController extends Controller
         $user->password = Hash::make($request->password);
         $user->save();
 
-        return redirect()->route('dropshipper.index')
+        return redirect()->route('admin.dropshipper.index')
             ->with('success', 'Dropshipper updated successfully!');
     }
 
@@ -134,7 +134,7 @@ class DropshipController extends Controller
 
         $user->save();
 
-        return redirect()->route('dropshipper.index')
+        return redirect()->route('admin.dropshipper.index')
             ->with('success', 'Dropshipper deactivated!');
     }
 
@@ -144,7 +144,7 @@ class DropshipController extends Controller
 
         $user->save();
 
-        return redirect()->route('dropshipper.index')
+        return redirect()->route('admin.dropshipper.index')
             ->with('success', 'Dropshipper Activated!');
     }
 
