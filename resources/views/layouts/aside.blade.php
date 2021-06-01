@@ -66,8 +66,8 @@
                         <span class="menu-text">My Account</span>
                     </a>
                 </li>
-                <li class="menu-item" aria-haspopup="true">
-                    <a href="" class="menu-link">
+                <li class="menu-item {{request()->routeIs('ds.order.*') ? 'menu-item-active' : ''}}" aria-haspopup="true">
+                    <a href="{{ route('ds.order.index') }}" class="menu-link">
                         <span class="menu-text">My Orders</span>
                     </a>
                 </li>
@@ -76,11 +76,11 @@
                         <span class="menu-text">Catalogue</span>
                     </a>
                 </li>
-                <li class="menu-item " aria-haspopup="true" data-menu-toggle="hover">
-                    <a href="javascript:;" class="menu-link ">
+                <li class="menu-item {{request()->routeIs('ds.cart.*') ? 'menu-item-active' : ''}}" aria-haspopup="true" data-menu-toggle="hover">
+                    <a href="{{ route('ds.cart.index') }}" class="menu-link ">
                         <span class="menu-text">Cart</span>
                         @if(Session::has('cart'))
-                        @if(request()->routeIs('ds.product.*'))
+                        @if(request()->routeIs('ds.product.*') || request()->routeIs('ds.cart.*'))
                         <span class="menu-label">
                             <span class="label label-rounded label-primary">{{ $data['totalQty'] }}</span>
                         </span>

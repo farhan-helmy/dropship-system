@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Dropshipper;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Cart;
-use App\Models\Product;
+use App\Models\Order;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
-class ShoppingCartController extends Controller
+class CheckoutController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,13 +17,12 @@ class ShoppingCartController extends Controller
      */
     public function index()
     {
-
-       if (!Session::has('cart')) {
+        if (!Session::has('cart')) {
             return view('ds.cart.index');
         }
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
-
+        
         $data = [
             'products' => $cart->items,
             'totalQty' => $cart->totalQty
@@ -31,47 +30,7 @@ class ShoppingCartController extends Controller
 
         $total = $cart->totalPrice;
 
-        return view('ds.cart.index', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice, 'data' => $data, 'total' => $total]);
-    }
-
-    public function reduceByOne($id) {
-
-        $oldCart = Session::has('cart') ? Session::get('cart') : null;
-        $cart = new Cart($oldCart);
-        $cart->reduceByOne($id);
-
-        if (count($cart->items) > 0) {
-            Session::put('cart', $cart);
-        } else {
-            Session::forget('cart');
-        }
-        return redirect()->route('ds.cart.index');
-
-    }
-    
-    
-    public function addToCart(Request $request, Product $product)
-    {
-        $oldCart = Session::has('cart') ? Session::get('cart') : null;
-        $cart = new Cart($oldCart);
-        $test = $cart->add($product, $product->id);
-        $request->session()->put('cart', $cart);
-
-        return redirect()->route('ds.cart.index');
-    }
-
-    public function removeItem($id) {
-        $oldCart = Session::has('cart') ? Session::get('cart') : null;
-        $cart = new Cart($oldCart);
-        $cart->removeItem($id);
-
-        if (count($cart->items) > 0) {
-            Session::put('cart', $cart);
-        } else {
-            Session::forget('cart');
-        }
-
-        return redirect()->route('ds.cart.index');
+        return view('ds.checkout.index', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice, 'data' => $data, 'total' => $total]);
     }
 
     /**
@@ -92,7 +51,14 @@ class ShoppingCartController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request->all());
+        $order = Order::create($request->except('receipt'));
+        $order->status = "Pending";
+        $order->save();
+
+        $order
+         ->addMediaFromRequest('receipt')
+         ->toMediaCollection();
     }
 
     /**

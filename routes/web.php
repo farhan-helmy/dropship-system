@@ -4,8 +4,11 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DropshipController;
+use App\Http\Controllers\Dropshipper\CheckoutController as DropshipperCheckoutController;
 use App\Http\Controllers\Dropshipper\DashboardController as DropshipperDashboardController;
+use App\Http\Controllers\Dropshipper\OrderController as DropshipperOrderController;
 use App\Http\Controllers\Dropshipper\ProductController as DropshipperProductController;
+use App\Http\Controllers\Dropshipper\ShoppingCartController as DropshipperShoppingCartController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -60,9 +63,25 @@ Route::middleware(['auth'])->group(function () {
             Route::get('', [DropshipperDashboardController::class, 'index'])->name('index');
         });
 
+        Route::prefix('order')->name('order.')->group(function () {
+            Route::get('', [DropshipperOrderController::class, 'index'])->name('index');
+        });
+
         Route::prefix('product')->name('product.')->group(function () {
             Route::get('', [DropshipperProductController::class, 'index'])->name('index');
             Route::get('add-to-cart/{product}', [DropshipperProductController::class, 'addToCart'])->name('addToCart');
+        });
+
+        Route::prefix('cart')->name('cart.')->group(function () {
+            Route::get('', [DropshipperShoppingCartController::class, 'index'])->name('index');
+            Route::get('reduce/{id}', [DropshipperShoppingCartController::class, 'reduceByOne'])->name('reduceByOne');
+            Route::get('add-one/{product}', [DropshipperShoppingCartController::class, 'addToCart'])->name('addToCart');
+            Route::get('remove-all/{id}', [DropshipperShoppingCartController::class, 'removeItem'])->name('removeItem');
+        });
+
+        Route::prefix('checkout')->name('checkout.')->group(function () {
+            Route::get('', [DropshipperCheckoutController::class, 'index'])->name('index');
+            Route::post('post', [DropshipperCheckoutController::class, 'store'])->name('store');
         });
     });
 

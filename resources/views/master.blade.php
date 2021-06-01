@@ -10,8 +10,6 @@
     <!--begin::Fonts-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
     <!--end::Fonts-->
-    <!--begin::Page Vendors Styles(used by this page)-->
-    <link href="{{ asset('assets/fullcalendar/main.css') }}" rel="stylesheet" type="text/css" />
     <!--end::Page Vendors Styles-->
     <!--begin::Global Theme Styles(used by all pages)-->
     <link href="{{ asset('assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
@@ -187,11 +185,8 @@
     {{-- <script src="assets/js/pages/custom/login/login-general.js"></script> --}}
     {{-- <script src="assets/js/pages/crud/ktdatatable/base/html-table.js"></script> --}}
     <script src="{{ asset('assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
-    <script src="{{ asset('assets/js/pages/crud/forms/widgets/tagify.js') }}"></script>
     <script src="{{ asset('assets/js/pages/widgets.js') }}"></script>
-    <script src="{{ asset('assets/fullcalendar/main.js') }}"></script>
-    <script src="{{ asset('assets/js/pages/features/calendar/google.js') }}"></script>
-    <script src="{{ asset('assets/js/pages/crud/forms/editors/quill.js') }}"></script>
+    <script src="{{ asset('assets/js/pages/custom/ecommerce/checkout.js') }}"></script>
     
     @stack('scripts')
     <!--end::Page Scripts-->

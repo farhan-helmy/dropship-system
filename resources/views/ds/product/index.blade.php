@@ -58,6 +58,7 @@
                         <div class="text-center mt-5 mb-md-0 mb-lg-5 mb-md-0 mb-lg-5 mb-lg-0 mb-5 d-flex flex-column">
                             <a href="#" class="font-size-h5 font-weight-bolder text-dark-75 text-hover-primary mb-1">{{$product->name}}</a>
                             <span class="font-size-lg">{{$product->description}}</span>
+                            <span class="font-size-lg">{{$product->stock}} left</span>
                         </div>
                         <!--end::Details-->
                     </div>
