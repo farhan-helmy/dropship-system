@@ -15,6 +15,11 @@ class Order extends Model implements HasMedia
 
     protected $guarded = [];
 
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, 'product_orders')->withPivot('total_price', 'quantity');
+    }
+
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');

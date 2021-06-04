@@ -83,7 +83,7 @@
                             <div class="image-input image-input-outline" id="kt_image_1">
                                 <label class="font-weight-bolder">Product Image</label>
                                 <div></div>
-                                <img class="image-input-wrapper" src="{{ asset($product->image) }}" >
+                                <img class="image-input-wrapper" src="{{ $product->getFirstMediaUrl() }}" >
 
                                 <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
                                     <i class="fa fa-pen icon-sm text-muted"></i>

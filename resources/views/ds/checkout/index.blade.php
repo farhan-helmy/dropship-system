@@ -177,13 +177,10 @@
                                                     <tbody>
                                                         @foreach($products as $product)
                                                         <tr class="font-weight-boldest">
-                                                            <td class="border-0 pl-0 pt-7 d-flex align-items-center">
+                                                            <td class="border-0 pl-0 pt-7 align-items-center">
                                                                 <!--begin::Symbol-->
-                                                                <div
-                                                                    class="symbol symbol-40 flex-shrink-0 mr-4 bg-light">
-                                                                    <div class="symbol-label"
-                                                                        style="background-image: url('/metronic/theme/html/demo1/dist/assets/media/products/11.png')">
-                                                                    </div>
+                                                                <div class="symbol symbol-40 flex-shrink-0 mr-4 bg-light">
+                                                                   
                                                                 </div>
                                                                 <!--end::Symbol-->
                                                                 {{ $product['item']['name'] }}

@@ -8,11 +8,17 @@ use DateTimeInterface;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Product extends Model
+class Product extends Model implements HasMedia
 {
     use HasFactory;
+    use InteractsWithMedia;
 
     protected $guarded = [];
+
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class, 'product_orders');
+    }
 
     protected function serializeDate(DateTimeInterface $date)
     {

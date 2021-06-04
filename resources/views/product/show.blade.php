@@ -10,7 +10,7 @@
                 <div class="card card-custom w-auto w-lg-auto w-xxl-300px">
                     <!--begin::Card Body-->
                     <div class="card-body px-12 py-10">
-                    <img src="{{ asset($product->image) }}" alt="" style="width: 250px; height: 250px; border-radius: 50%;">
+                    <img src="{{ $product->getFirstMediaUrl() }}" alt="" style="width: 250px; height: 250px; border-radius: 50%;">
                         <h3 class="font-weight-bolder font-size-h2 mb-1">
                             <a href="#" class="text-dark-75">{{$product->name}}</a>
                         </h3>

@@ -65,6 +65,8 @@ Route::middleware(['auth'])->group(function () {
 
         Route::prefix('order')->name('order.')->group(function () {
             Route::get('', [DropshipperOrderController::class, 'index'])->name('index');
+            Route::get('data', [DropshipperOrderController::class, 'data'])->name('data');
+            Route::get('show/{order}', [DropshipperOrderController::class, 'show'])->name('show');
         });
 
         Route::prefix('product')->name('product.')->group(function () {

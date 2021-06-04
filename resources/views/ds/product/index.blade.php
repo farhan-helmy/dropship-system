@@ -2,6 +2,18 @@
 
 @section('content')
 
+@if ($message = Session::get('success'))
+<div class="alert alert-custom alert-notice alert-light-success fade show" role="alert">
+    <div class="alert-icon"><i class="flaticon-warning"></i></div>
+    <div class="alert-text">{{ $message }}</div>
+    <div class="alert-close">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true"><i class="ki ki-close"></i></span>
+        </button>
+    </div>
+</div>
+@endif
+
 <div class="card-body">
     <!--begin::Engage Widget 15-->
     <div class="card card-custom mb-12">
@@ -46,7 +58,7 @@
                         <!--begin::Image-->
                         <div class="overlay">
                             <div class="overlay-wrapper rounded bg-light text-center">
-                                <img src="{{$product->image}}" alt="" class="mw-100 w-200px">
+                                <img src="{{ $product->getFirstMediaUrl() }}" alt="" class="mw-100 w-200px">
                             </div>
                             <div class="overlay-layer">
                                 <a href="#" class="btn font-weight-bolder btn-sm btn-primary mr-2">Quick View</a>

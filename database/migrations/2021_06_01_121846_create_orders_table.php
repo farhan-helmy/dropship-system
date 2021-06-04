@@ -24,6 +24,9 @@ class CreateOrdersTable extends Migration
             $table->string('negeri');
             $table->string('negara');
             $table->string('status')->nullable();
+            $table->string('item')->nullable();
+            $table->integer('price')->nullable();
+            $table->integer('quantity')->nullable();
             $table->timestamps();
         });
     }

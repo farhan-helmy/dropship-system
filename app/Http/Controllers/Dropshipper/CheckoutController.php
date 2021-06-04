@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Dropshipper;
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class CheckoutController extends Controller
@@ -51,14 +53,45 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all());
+        $oldCart = Session::get('cart');
+        $cart = new Cart($oldCart);
+
+        $data = [
+            'products' => $cart->items,
+            'totalQty' => $cart->totalQty
+        ];
+
+        $total = $cart->totalPrice;
+
         $order = Order::create($request->except('receipt'));
         $order->status = "Pending";
+        $order->user_id = Auth::id();
         $order->save();
 
         $order
          ->addMediaFromRequest('receipt')
          ->toMediaCollection();
+
+        //$all_prod = [];
+        foreach($cart->items as $items)
+        {
+            $qty = $items['qty'];
+            $price = $items['price'];
+            $id = $items['item']['id'];
+        
+            $product = Product::where('id', $id)->first();
+            $new_value = $product->stock - $qty;
+            $product->stock = $new_value;
+            $product->save();
+
+            $order->products()->attach($id, ['total_price' => $price, 'quantity' => $qty]);
+        }
+
+        return redirect()->route('ds.order.index')
+            ->with('success', 'Item has been purchased successfully!');
+        //dd($all_prod);
+        //dd($request->all());
+       
     }
 
     /**

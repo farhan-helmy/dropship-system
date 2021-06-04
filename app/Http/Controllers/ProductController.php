@@ -10,12 +10,12 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Stringable;
 use Yajra\DataTables\Html\Builder;
-use App\Traits\UploadTrait;
+
 
 
 class ProductController extends Controller
 {
-    use UploadTrait;
+   
     /**
      * Display a listing of the resource.
      *
@@ -54,9 +54,10 @@ class ProductController extends Controller
 
         return DataTables::of($products)
             ->editColumn('image', function ($products) {
+                $media = $products->getFirstMediaUrl();
                 $product =  '<div class="symbol symbol-90 symbol-light mt-1">
                 <span class="symbol-label">
-                    <img src="'.$products->image.'" class="h-75 align-self-end" alt="" />
+                    <img src="'.$media.'" class="h-75 align-self-end" alt="" />
                 </span>
             </div>';
                 return $product;
@@ -104,29 +105,17 @@ class ProductController extends Controller
         $request->validate([
             'product_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
+
         $product = new Product();
         $product->name = $request->name;
         $product->stock = $request->stock;
         $product->price = $request->price;
         $product->description = $request->description;
-
-        if ($request->has('product_image')) {
-            // Get image file
-            $image = $request->file('product_image');
-            //dd($image);
-            // Make a image name based on user name and current timestamp
-            $name = Str::slug($request->name) . '_' . time();
-            // Define folder path
-            $folder = '/uploads/images/';
-            // Make a file path where image will be stored [ folder path + file name + file extension]
-            $filePath = $folder . $name . '.' . $image->getClientOriginalExtension();
-            // Upload image
-            $this->uploadOne($image, $folder, 'public', $name);
-            // Set user profile image path in database to filePath
-            $product->product_image = $filePath;
-        }
-
         $product->save();
+
+        $product
+        ->addMediaFromRequest('product_image')
+        ->toMediaCollection();
 
         return redirect()->route('admin.product.index')
             ->with('success', 'Product registered successfully!');
@@ -163,6 +152,9 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
+        $media = $product->getFirstMedia();
+        $media->delete();
+
         $request->validate([
             'product_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
@@ -172,23 +164,11 @@ class ProductController extends Controller
         $product->price = $request->price;
         $product->description = $request->description;
 
-        if ($request->has('product_image')) {
-            // Get image file
-            $image = $request->file('product_image');
-            //dd($image);
-            // Make a image name based on user name and current timestamp
-            $name = Str::slug($request->name) . '_' . time();
-            // Define folder path
-            $folder = '/uploads/images/';
-            // Make a file path where image will be stored [ folder path + file name + file extension]
-            $filePath = $folder . $name . '.' . $image->getClientOriginalExtension();
-            // Upload image
-            $this->uploadOne($image, $folder, 'public', $name);
-            // Set user profile image path in database to filePath
-            $product->product_image = $filePath;
-        }
-
         $product->save();
+
+        $product
+        ->addMediaFromRequest('product_image')
+        ->toMediaCollection();
 
 
         return redirect()->route('admin.product.index')
