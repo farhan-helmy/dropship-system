@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Dropshipper;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Html\Builder;
 use DataTables;
-use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -22,7 +20,7 @@ class OrderController extends Controller
             ['data' => 'id', 'name' => 'id', 'title' => 'Order ID'],
             ['data' => 'name', 'name' => 'name', 'title' => 'Name'],
             ['data' => 'status', 'name' => 'status', 'title' => 'Status'],
-            ['data' => 'created_at', 'name' => 'created_at', 'title' => 'Date submitted'],
+            ['data' => 'created_at', 'name' => 'created_at', 'title' => 'Order Submitted'],
             [
                 'defaultContent' => '',
                 'data'           => 'action',
@@ -36,28 +34,24 @@ class OrderController extends Controller
                 'footer'         => '',
             ]
         ])
-            ->ajax(route('ds.order.data'));
+            ->ajax(route('admin.order.data'));
 
-        return view('ds.order.index', compact('order'));
+       
+        return view('order.index', compact('order'));
     }
 
     public function data()
     {
-        $orders = Order::where('user_id', Auth::id());
+        $orders = Order::all();
 
         return DataTables::of($orders)
-        ->editColumn('id', function ($orders) {
-            $html =  '#'. $orders->id;
-            return $html;
-        })
-        ->editColumn('action', function ($orders) {
-            $order =  '<a href="order/show/' . $orders->id . '" class="btn btn-success"> View</a>';
-            return $order;
-        })
-        ->rawColumns(['action','id'])
-        ->make();
+            ->editColumn('action', function ($orders) {
+                $order =  '<a href="order/show/' . $orders->id . '" class="btn btn-info">View</a>';
+                return $order;
+            })
+            ->rawColumns(['action'])
+            ->make();
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -87,7 +81,6 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-
         $total_up = [];
 
         foreach($order->products as $product)
@@ -98,9 +91,8 @@ class OrderController extends Controller
         }
 
         $go = array_sum($total_up);
-        
-        return view('ds.order.show', compact('order', 'go'));
 
+        return view('order.show', compact('order', 'go'));
     }
 
     /**
@@ -109,9 +101,9 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Order $order)
     {
-        //
+        return view('order.edit', compact('order'));
     }
 
     /**
@@ -121,9 +113,14 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, Order $order)
+    {   
+        $order->tracking_num = $request->tracking_num;
+        $order->status = "Approved";
+        $order->save();
+
+        return redirect()->route('admin.order.index')
+            ->with('success', 'Order approved!');
     }
 
     /**

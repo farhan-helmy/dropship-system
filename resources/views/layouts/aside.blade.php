@@ -36,8 +36,8 @@
                         <span class="menu-text">My Account</span>
                     </a>
                 </li>
-                <li class="menu-item" aria-haspopup="true">
-                    <a href="" class="menu-link">
+                <li class="menu-item {{request()->routeIs('admin.order.*') ? 'menu-item-active' : ''}}" aria-haspopup="true">
+                    <a href="{{ route('admin.order.index') }}" class="menu-link">
                         <span class="menu-text">My Orders</span>
                     </a>
                 </li>

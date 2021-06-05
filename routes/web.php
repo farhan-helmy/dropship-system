@@ -9,6 +9,7 @@ use App\Http\Controllers\Dropshipper\DashboardController as DropshipperDashboard
 use App\Http\Controllers\Dropshipper\OrderController as DropshipperOrderController;
 use App\Http\Controllers\Dropshipper\ProductController as DropshipperProductController;
 use App\Http\Controllers\Dropshipper\ShoppingCartController as DropshipperShoppingCartController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +33,14 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::prefix('dashboard')->name('dashboard.')->group(function () {
             Route::get('', [DashboardController::class, 'index'])->name('index');
+        });
+
+        Route::prefix('order')->name('order.')->group(function () {
+            Route::get('', [OrderController::class, 'index'])->name('index');
+            Route::get('data', [OrderController::class, 'data'])->name('data');
+            Route::put('update/{order}', [OrderController::class, 'update'])->name('update');
+            Route::get('show/{order}', [OrderController::class, 'show'])->name('show');
+            Route::get('edit/{order}', [OrderController::class, 'edit'])->name('edit');
         });
 
         Route::prefix('dropshipper')->name('dropshipper.')->group(function () {
