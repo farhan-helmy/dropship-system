@@ -96,7 +96,7 @@ class DropshipController extends Controller
      */
     public function show(User $user)
     {
-        return view('admin.dropshipper.show', compact('user'));
+        return view('dropshipper.show', compact('user'));
     }
 
     /**
