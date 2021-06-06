@@ -87,6 +87,8 @@ class CheckoutController extends Controller
             $order->products()->attach($id, ['total_price' => $price, 'quantity' => $qty]);
         }
 
+        $request->session()->forget('cart');
+
         return redirect()->route('ds.order.index')
             ->with('success', 'Item has been purchased successfully!');
         //dd($all_prod);
