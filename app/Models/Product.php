@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use DateTimeInterface;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Illuminate\Notifications\Notifiable;
 
 class Product extends Model implements HasMedia
 {
@@ -24,4 +25,6 @@ class Product extends Model implements HasMedia
     {
         return $date->format('Y-m-d H:i:s');
     }
+
+    
 }

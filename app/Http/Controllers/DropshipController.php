@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
 use DataTables;
 use Illuminate\Support\Facades\Hash;
+use Yajra\DataTables\Contracts\DataTable;
 use Yajra\DataTables\Html\Builder;
 
 class DropshipController extends Controller
@@ -17,6 +19,7 @@ class DropshipController extends Controller
      */
     public function index(Builder $builder)
     {
+
         $dropshipper = $builder->columns([
             ['data' => 'name', 'name' => 'name', 'title' => 'Name'],
             ['data' => 'email', 'name' => 'email', 'title' => 'Email'],
@@ -38,7 +41,9 @@ class DropshipController extends Controller
         ])
             ->ajax(route('admin.dropshipper.data'));
 
-        return view('dropshipper.index', compact('dropshipper'));
+        $pending = Order::where('status', 'Pending')->count();
+//dd($pending);
+        return view('dropshipper.index', compact('dropshipper', 'pending'));
     }
 
     public function data()
@@ -94,9 +99,32 @@ class DropshipController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(User $user, Builder $builder)
     {
-        return view('dropshipper.show', compact('user'));
+        $ordertable = $builder->columns([
+            ['data' => 'id', 'name' => 'id', 'title' => 'Order ID'],
+            ['data' => 'name', 'name' => 'name', 'title' => 'Customer Name'],
+            ['data' => 'tracking_num', 'name' => 'tracking_num', 'title' => 'Tracking Num'],
+            ['data' => 'status', 'name' => 'status', 'title' => 'Status'],
+        ])
+            ->fixedHeader(['header' => false])
+            ->ajax([
+                'url' => route('admin.dropshipper.dataorder'),
+                'type' => 'GET',
+                'data' => 'function(d) { d.key = "' . $user->id . '"; }',
+            ]);
+
+        $pending = Order::where('status', 'Pending')->count();
+        
+        return view('dropshipper.show', compact('user', 'ordertable', 'pending'));
+    }
+
+    public function dataorder(Request $request)
+    {
+        $order = Order::where('user_id', $request->input('key'))->get();
+
+        return DataTables::of($order)
+            ->make();
     }
 
     /**

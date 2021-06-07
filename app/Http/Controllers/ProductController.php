@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -45,7 +46,8 @@ class ProductController extends Controller
         ])
             ->ajax(route('admin.product.data'));
 
-        return view('product.index', compact('product'));
+        $pending = Order::where('status', 'Pending')->count();
+        return view('product.index', compact('product','pending'));
     }
 
     public function data()
@@ -129,7 +131,8 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return view('product.show', compact('product'));
+        $pending = Order::where('status', 'Pending')->count();
+        return view('product.show', compact('product', 'pending'));
     }
 
     /**
@@ -140,7 +143,9 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('product.edit', compact('product'));
+        $pending = Order::where('status', 'Pending')->count();
+
+        return view('product.edit', compact('product', 'pending'));
     }
 
     /**

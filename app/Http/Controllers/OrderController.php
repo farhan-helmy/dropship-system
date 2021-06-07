@@ -36,8 +36,9 @@ class OrderController extends Controller
         ])
             ->ajax(route('admin.order.data'));
 
+        $pending = Order::where('status', 'Pending')->count();
        
-        return view('order.index', compact('order'));
+        return view('order.index', compact('order', 'pending'));
     }
 
     public function data()
@@ -92,7 +93,9 @@ class OrderController extends Controller
 
         $go = array_sum($total_up);
 
-        return view('order.show', compact('order', 'go'));
+        $pending = Order::where('status', 'Pending')->count();
+
+        return view('order.show', compact('order', 'go', 'pending'));
     }
 
     /**

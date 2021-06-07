@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\User;
+use App\Notifications\StockLow;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -78,11 +80,15 @@ class CheckoutController extends Controller
             $qty = $items['qty'];
             $price = $items['price'];
             $id = $items['item']['id'];
-        
+            $name = $items['item']['name'];
+            $user = User::where('id', 1)->first();
+
             $product = Product::where('id', $id)->first();
             $new_value = $product->stock - $qty;
             $product->stock = $new_value;
             $product->save();
+
+            $user->notify(new StockLow($name));
 
             $order->products()->attach($id, ['total_price' => $price, 'quantity' => $qty]);
         }
@@ -92,8 +98,7 @@ class CheckoutController extends Controller
         return redirect()->route('ds.order.index')
             ->with('success', 'Item has been purchased successfully!');
         //dd($all_prod);
-        //dd($request->all());
-       
+        //dd($request->all());   
     }
 
     /**

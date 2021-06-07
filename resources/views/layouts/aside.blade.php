@@ -39,6 +39,9 @@
                 <li class="menu-item {{request()->routeIs('admin.order.*') ? 'menu-item-active' : ''}}" aria-haspopup="true">
                     <a href="{{ route('admin.order.index') }}" class="menu-link">
                         <span class="menu-text">My Orders</span>
+                        <span class="menu-label">
+                            <span class="label label-rounded label-primary">{{ $pending ?? '' }}</span>
+                        </span>
                     </a>
                 </li>
                 <li class="menu-item {{request()->routeIs('admin.product.*') ? 'menu-item-active' : ''}}" aria-haspopup="true">

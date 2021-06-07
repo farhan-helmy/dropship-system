@@ -46,6 +46,7 @@ Route::middleware(['auth'])->group(function () {
         Route::prefix('dropshipper')->name('dropshipper.')->group(function () {
             Route::get('', [DropshipController::class, 'index'])->name('index');
             Route::get('data', [DropshipController::class, 'data'])->name('data');
+            Route::get('dataorder', [DropshipController::class, 'dataorder'])->name('dataorder');
             Route::get('create', [DropshipController::class, 'create'])->name('create');
             Route::post('store', [DropshipController::class, 'store'])->name('store');
             Route::get('show/{user}', [DropshipController::class, 'show'])->name('show');
