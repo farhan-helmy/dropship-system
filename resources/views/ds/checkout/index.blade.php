@@ -210,14 +210,12 @@
                                     <!--begin: Wizard Actions-->
                                     <div class="d-flex justify-content-between border-top mt-5 pt-10">
                                         <div class="mr-2">
-                                            <button type="button"
+                                            <a href="{{route('ds.cart.index')}}"
                                                 class="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4"
-                                                data-wizard-type="action-prev">Previous</button>
+                                                >Previous</a>
                                         </div>
                                         <div>
-                                            <button type="button"
-                                                class="btn btn-success font-weight-bolder text-uppercase px-9 py-4"
-                                                data-wizard-type="action-submit">Cancel</button>
+
                                             <button type="submit"
                                                 class="btn btn-primary font-weight-bolder text-uppercase px-9 py-4">Submit</button>
                                         </div>

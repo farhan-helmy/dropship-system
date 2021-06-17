@@ -78,6 +78,10 @@ class DropshipController extends Controller
      */
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'icno' => 'required|unique:users|max:12|min:12',
+            
+        ]);
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;

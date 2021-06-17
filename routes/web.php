@@ -11,6 +11,7 @@ use App\Http\Controllers\Dropshipper\ProductController as DropshipperProductCont
 use App\Http\Controllers\Dropshipper\ShoppingCartController as DropshipperShoppingCartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SaleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -64,6 +65,11 @@ Route::middleware(['auth'])->group(function () {
             Route::get('edit/{product}', [ProductController::class, 'edit'])->name('edit');
             Route::put('update/{product}', [ProductController::class, 'update'])->name('update');
             Route::get('show/{product}', [ProductController::class, 'show'])->name('show');
+            Route::delete('delete/{product}', [ProductController::class, 'destroy'])->name('delete');
+        });
+
+        Route::prefix('sales')->name('sales.')->group(function () {
+            Route::get('index', [SaleController::class, 'index'])->name('index');
         });
     });
 
@@ -71,6 +77,9 @@ Route::middleware(['auth'])->group(function () {
 
         Route::prefix('dashboard')->name('dashboard.')->group(function () {
             Route::get('', [DropshipperDashboardController::class, 'index'])->name('index');
+            Route::get('edit/{user}', [DropshipperDashboardController::class, 'edit'])->name('edit');
+            Route::get('edit/{user}', [DropshipperDashboardController::class, 'edit'])->name('edit');
+            Route::put('update/{user}', [DropshipperDashboardController::class, 'update'])->name('update');
         });
 
         Route::prefix('order')->name('order.')->group(function () {

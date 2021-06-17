@@ -157,8 +157,13 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        $media = $product->getFirstMedia();
-        $media->delete();
+        if($request->product_image !== NULL){
+
+            $media = $product->getFirstMedia();
+            $d = $media->delete();
+            //dd($d);
+            
+        }
 
         $request->validate([
             'product_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
@@ -186,8 +191,11 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        return redirect()->route('admin.product.index')
+        ->with('success', 'Product deleted successfully!');
     }
 }

@@ -21,7 +21,7 @@
                             <span class="text-dark-50 flex-root font-weight-bold">Stock Left</span>
                             <span class="text-dark flex-root font-weight-bold">{{$product->stock}}</span>
                         </div>
-
+                        <a class="btn btn-danger" href="{{route("admin.product.delete", ['product' => $product->id])}}"> Delete</a>
                         <!--end::Info-->
                     </div>
                     <!--end::Card Body-->

@@ -54,8 +54,8 @@
                         <span class="menu-text">Dropshipper</span>
                     </a>
                 </li>
-                <li class="menu-item" aria-haspopup="true">
-                    <a href="" class="menu-link">
+                <li class="menu-item {{request()->routeIs('admin.sales.*') ? 'menu-item-active' : ''}}" aria-haspopup="true">
+                    <a href="{{ route('admin.sales.index') }}" class="menu-link">
                         <span class="menu-text">Sales</span>
                     </a>
                 </li>

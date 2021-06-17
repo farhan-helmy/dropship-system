@@ -1,0 +1,23 @@
+1. Untuk ds punya view, aku rasa dorang pun boleh update profile. Nama, email, 
+no phone, etc including pw supaya dorang boleh change pw to their own pw. 
+
+2.  During boss nk add acc ds, kan boss kena isi password, ic, no phone kann... 
+utk attribute2 ni kau ada letak syarat tak? 
+contoh ic tu kena int and tak leh  lebih drpd 12 character? password lak kena 8 character ke? tu contohh la
+
+3. utk product, boss tak leh delete product eh?
+ Pastu tdi aku try edit existing product (update), tak leh 
+
+4. Utk total monthly sales graph tu aku rasa bukan ke sptutnya dlm menu 'Sales'? 
+
+5. Yg no of order tu, dia display number
+ of orders made by ds utk that particular month.. 
+ tujuan dia aku nk display tu, sbb bila ds dah reach lebih 10 
+ orders dlm month tu, boss akan receive notification. 
+ And no of order ni ada displayed kt ds punya profile and 
+ both boss and ds aku rasa patutnya boleh nmpk nombor ni.
+  Itu yg aku have in mind laaa.. kau rasa mcmana? 
+
+6. Button 'previous' and 'cancel' during 
+isi customer details (ds view) tak function.
+ And voucher code dkt checkout tu tak payah kot aku rasa

@@ -80,19 +80,7 @@
                         <tr>
                             <td colspan="2" class="border-0 pt-10">
                                 <form>
-                                    <div class="form-group row">
-                                        <div class="col-md-3 d-flex align-items-center">
-                                            <label class="font-weight-bolder">Apply Voucher</label>
-                                        </div>
-                                        <div class="col-md-7">
-                                            <div class="input-group w-100">
-                                                <input type="text" class="form-control" placeholder="Voucher Code">
-                                                <div class="input-group-append">
-                                                    <button class="btn btn-secondary" type="button">Apply</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+    
                                 </form>
                             </td>
                             <td colspan="2" class="border-0 text-right pt-10">

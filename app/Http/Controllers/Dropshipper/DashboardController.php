@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Dropshipper;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class DashboardController extends Controller
 {
@@ -55,9 +57,9 @@ class DashboardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        return view('ds.dashboard.edit', compact('user'));
     }
 
     /**
@@ -67,9 +69,15 @@ class DashboardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $user->update($request->all());
+
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        return redirect()->route('ds.dashboard.index')
+            ->with('success', 'Profile updated successfully!');
     }
 
     /**

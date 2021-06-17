@@ -23,7 +23,7 @@
         <div class="card card-custom gutter-b">
             <div class="card-header">
                 <h3 class="card-title">
-                    Edit product
+                    Register new dropshipper
                 </h3>
                 <div class="card-toolbar">
                     <div class="example-tools justify-content-center">
@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <div class="card-toolbar">
-                    <a href="{{route('admin.product.index')}}" class="btn btn-primary font-weight-bolder">
+                    <a href="{{route('admin.dropshipper.index')}}" class="btn btn-primary font-weight-bolder">
                         <span class="svg-icon svg-icon-md">
                             <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Flatten.svg-->
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -49,7 +49,7 @@
 
 
             <!--begin::Form-->
-            <form action="{{ route('admin.product.update', ['product' => $product->id]) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('ds.dashboard.update', ['user' => $user->id]) }}" method="POST"> 
                 @method('PUT')
                 @csrf
                 <div class="card-body">
@@ -61,47 +61,32 @@
                             </div>
                         </div>
                     </div> -->
-                    <div class="mt-6">
-                        <div class="text-muted mb-4 font-weight-bolder font-size-lg">Product Info</div>
-                        <div class="form-group">
-                            <label class="font-weight-bolder">Name</label>
-                            <input type="text" class="form-control form-control-solid form-control-lg" placeholder="Enter user name" name="name" value="{{$product->name}}" />
-                        </div>
-                        <div class="form-group">
-                            <label class="font-weight-bolder">Stock</label>
-                            <input type="number" class="form-control form-control-solid form-control-lg" placeholder="Enter stock" name="stock" value="{{$product->stock}}" />
-                        </div>
-                        <div class="form-group">
-                            <label class="font-weight-bolder">Price (MYR)</label>
-                            <input type="number" class="form-control form-control-solid form-control-lg" placeholder="Enter price" name="price" value="{{$product->price}}" />
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleTextarea" class="font-weight-bolder">Description</label>
-                            <textarea type="text" class="form-control form-control-solid form-control-lg" placeholder="Enter description" name="description">{{$product->description}} </textarea>
-                        </div>
-                        <div class="form-group">
-                                <label class="font-weight-bolder">Product Image</label>
-                                <div></div>
-                                <h4 class="mb-10 font-weight-bold text-dark"></h4>
-                                <div class="row">
-                                    <div class="col-xl-6">
-                                        <!--begin::Input-->
-                                        <div class="form-group fv-plugins-icon-container has-success">
-                                            <label>Image</label>
-                                            <input type="file" class="custom-file-input" id="customFile"
-                                                name="product_image" />
-                                            <label class="custom-file-label" for="customFile">Choose
-                                                file</label>
-                                            <div class="fv-plugins-message-container"></div>
-                                        </div>
-                                        <!--end::Input-->
-                                    </div>
-                                </div> 
-                        </div>
-                        <button type="submit" class="btn btn-primary font-weight-bolder mr-2 px-8">Save</button>
-                        <button type="reset" class="btn btn-clear font-weight-bolder text-muted px-8">Discard</button>
+                    <div class="form-group">
+                        <label>Name <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="Enter user name" name="name" value="{{$user->name}}" />
+                    </div>
+                    <div class="form-group">
+                        <label>Email address <span class="text-danger">*</span></label>
+                        <input type="email" class="form-control" placeholder="Enter email" name="email" value="{{$user->email}}" />
+                        <span class="form-text text-muted">We'll never share your email with anyone else.</span>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone number <span class="text-danger">*</span></label>
+                        <input type="number" class="form-control" placeholder="Enter phone no" name="phone_no" value="{{$user->phone_no}}" />
+                    </div>
+                    <div class="form-group">
+                        <label>Nric <span class="text-danger">*</span></label>
+                        <input type="number" class="form-control" placeholder="Enter phone no" name="nric" value="{{$user->nric}}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password <span class="text-danger">*</span></label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password" value="{{$user->password}}" />
                     </div>
                 </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                </div>
+
             </form>
 
             <!--end::Form-->

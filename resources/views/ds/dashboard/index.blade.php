@@ -49,7 +49,7 @@
                                 </div>
                             </div>
                             <div class="d-flex align-items-center w-25 flex-fill float-right mt-lg-12 mt-8">
-
+                               <a href="{{route('ds.dashboard.edit', ['user' => Auth::id()])}}" class="btn btn-danger">Edit profile</a>
                             </div>
                         </div>
                         <!--end::Content-->
