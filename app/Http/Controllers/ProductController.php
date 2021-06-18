@@ -157,32 +157,54 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        if($request->product_image !== NULL){
-
+        if($request->product_image == NULL){
+            
+            $request->validate([
+                'product_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            ]);
+    
+            $product->name = $request->name;
+            $product->stock = $request->stock;
+            $product->price = $request->price;
+            $product->description = $request->description;
+    
+            $product->save();
+    
+            $product
+            ->addMediaFromRequest('product_image')
+            ->toMediaCollection();
+    
+    
+            return redirect()->route('admin.product.index')
+                ->with('success', 'Product updated successfully!');
+        }else{
+        
             $media = $product->getFirstMedia();
             $d = $media->delete();
             //dd($d);
+            $request->validate([
+                'product_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            ]);
+    
+            $product->name = $request->name;
+            $product->stock = $request->stock;
+            $product->price = $request->price;
+            $product->description = $request->description;
+    
+            $product->save();
+    
+            $product
+            ->addMediaFromRequest('product_image')
+            ->toMediaCollection();
+    
+    
+            return redirect()->route('admin.product.index')
+                ->with('success', 'Product updated successfully!');
+            
             
         }
 
-        $request->validate([
-            'product_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
-        ]);
-
-        $product->name = $request->name;
-        $product->stock = $request->stock;
-        $product->price = $request->price;
-        $product->description = $request->description;
-
-        $product->save();
-
-        $product
-        ->addMediaFromRequest('product_image')
-        ->toMediaCollection();
-
-
-        return redirect()->route('admin.product.index')
-            ->with('success', 'Product updated successfully!');
+      
     }
 
     /**

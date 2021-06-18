@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\ProductOrder;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -12,24 +14,24 @@ class SaleController extends Controller
     public function index()
     {
 
-        $month = ['01','02','03',];
+       // $month = ['01','02','03',];
 
-        $product_name = [];
-        $product_id = [];
-        $product_all = Product::all();
+        $ds_name = [];
+        $ds_id = [];
+        $ds_all = User::role('ds')->get();
 
-        foreach($product_all as $product)
+        foreach($ds_all as $ds)
         {
-            array_push($product_name, $product->name);
-            array_push($product_id, $product->id);
+            array_push($ds_name, $ds->name);
+            array_push($ds_id, $ds->id);
         }
 
-        $product = [];
-        foreach ($product_id as $key => $value) {
-            $product[] = ProductOrder::where('product_id', $value)->count();
+        $order = [];
+        foreach ($ds_id as $key => $value) {
+            $order[] = Order::where('user_id', $value)->count();
         }
 
-    	return view('sales.index')->with('product_name',json_encode($product_name))->with('product',json_encode($product,JSON_NUMERIC_CHECK));
+    	return view('sales.index')->with('name',json_encode($ds_name))->with('order',json_encode($order,JSON_NUMERIC_CHECK));
 
     }
 }

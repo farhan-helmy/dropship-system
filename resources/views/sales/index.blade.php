@@ -65,13 +65,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.min.js"></script>
 
 <script>
-    var count = <?php echo $product; ?>;
-    var product = <?php echo $product_name; ?>;
+    var count = <?php echo $order; ?>;
+    var product = <?php echo $name; ?>;
     var barChartData = {
         labels: product,
         datasets: [{
-            label: 'Product',
-            backgroundColor: "pink",
+            label: 'Dropshipper',
+            backgroundColor: "red",
             data: count
         }]
     };
