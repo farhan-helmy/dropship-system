@@ -30,8 +30,10 @@ class SaleController extends Controller
         foreach ($ds_id as $key => $value) {
             $order[] = Order::where('user_id', $value)->count();
         }
+        
+        $pending = Order::where('status', 'Pending')->count();
 
-    	return view('sales.index')->with('name',json_encode($ds_name))->with('order',json_encode($order,JSON_NUMERIC_CHECK));
+    	return view('sales.index', compact('pending'))->with('name',json_encode($ds_name))->with('order',json_encode($order,JSON_NUMERIC_CHECK));
 
     }
 }

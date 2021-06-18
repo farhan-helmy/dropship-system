@@ -25,9 +25,7 @@
                             @method('DELETE')
                             @csrf
                             <button class="btn btn-danger" type="submit"> Delete</a>
-                        </form>
-                        
-                        <!--end::Info-->
+                        </form>    
                     </div>
                     <!--end::Card Body-->
                 </div>
