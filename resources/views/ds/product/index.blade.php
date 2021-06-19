@@ -61,7 +61,7 @@
                                 <img src="{{ $product->getFirstMediaUrl() }}" alt="" class="mw-100 w-200px">
                             </div>
                             <div class="overlay-layer">
-                                <a href="#" class="btn font-weight-bolder btn-sm btn-primary mr-2">Quick View</a>
+                                <a href="{{route('ds.product.show', ['product' => $product->id])}}" class="btn font-weight-bolder btn-sm btn-primary mr-2">Quick View</a>
                                 <a href="{{ route('ds.product.addToCart', ['product' => $product->id]) }}" class="btn font-weight-bolder btn-sm btn-light-primary">Add to cart</a>
                             </div>
                         </div>

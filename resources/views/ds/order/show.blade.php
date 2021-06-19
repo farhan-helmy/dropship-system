@@ -78,6 +78,13 @@
                             <a class="alert alert-success">
                                     {{$order->status}}
                             </a>
+                            <div class="separator separator-dashed my-5"></div>
+                            <!--end::Section-->
+                            <!--begin::Section-->
+                            <h6 class="font-weight-bolder mb-5">Tracking number:</h6>
+                            <a class="alert alert-warning">
+                                    {{$order->tracking_num}}
+                            </a>
                             <!--end::Section-->
                             <div class="separator separator-dashed my-5"></div>
                             <!--end::Section-->

@@ -90,6 +90,7 @@ Route::middleware(['auth'])->group(function () {
 
         Route::prefix('product')->name('product.')->group(function () {
             Route::get('', [DropshipperProductController::class, 'index'])->name('index');
+            Route::get('show/{product}', [DropshipperProductController::class, 'show'])->name('show');
             Route::get('add-to-cart/{product}', [DropshipperProductController::class, 'addToCart'])->name('addToCart');
         });
 

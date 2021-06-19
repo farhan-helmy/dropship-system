@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Dropshipper;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use App\Models\User;
+use App\Notifications\OrderHit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class DashboardController extends Controller
@@ -16,6 +19,18 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        $checking  = Order::where('user_id', Auth::id())->count();
+
+        $user = User::where('id', Auth::id())->first();
+        $boss = User::where('id', 1)->first();
+        //dd($user->is_hit);
+        if($checking >= 10 && $user->is_hit == 0)
+        {
+            $boss->notify(new OrderHit($user->name));
+            $user->is_hit = 1;
+            $user->save();
+        }
+        
         return view('ds.dashboard.index');
     }
 

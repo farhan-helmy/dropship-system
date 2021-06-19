@@ -43,7 +43,7 @@ class OrderController extends Controller
 
     public function data()
     {
-        $orders = Order::where('user_id', Auth::id());
+        $orders = Order::where('user_id', Auth::id())->orderBy('created_at', 'desc');
 
         return DataTables::of($orders)
         ->editColumn('id', function ($orders) {
