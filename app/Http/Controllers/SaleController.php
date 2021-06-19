@@ -13,27 +13,19 @@ class SaleController extends Controller
 {
     public function index()
     {
-
-       // $month = ['01','02','03',];
-
-        $ds_name = [];
-        $ds_id = [];
-        $ds_all = User::role('ds')->get();
-
-        foreach($ds_all as $ds)
-        {
-            array_push($ds_name, $ds->name);
-            array_push($ds_id, $ds->id);
-        }
-
+       
+        $month = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
+        $test = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
         $order = [];
-        foreach ($ds_id as $key => $value) {
-            $order[] = Order::where('user_id', $value)->count();
+        foreach ($month as $key => $value) {
+            $order[] = ProductOrder::whereMonth('created_at', $value)->sum('total_price');
         }
-        
+
+        // $order[] = Order::whereMonth('created_at', $value)->get()->each(function ($order) {
+        //     $order->products->sum('pivot.total_price');
+        // });
         $pending = Order::where('status', 'Pending')->count();
 
-    	return view('sales.index', compact('pending'))->with('name',json_encode($ds_name))->with('order',json_encode($order,JSON_NUMERIC_CHECK));
-
+        return view('sales.index', compact('pending'))->with('month', json_encode($test))->with('order', json_encode($order, JSON_NUMERIC_CHECK));
     }
 }

@@ -17,7 +17,7 @@ class Order extends Model implements HasMedia
 
     public function products()
     {
-        return $this->belongsToMany(Product::class, 'product_orders')->withPivot('total_price', 'quantity');
+        return $this->belongsToMany(Product::class, 'product_orders')->withPivot('total_price', 'quantity')->withTimestamps();
     }
 
     protected function serializeDate(DateTimeInterface $date)

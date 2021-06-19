@@ -66,11 +66,11 @@
 
 <script>
     var count = <?php echo $order; ?>;
-    var product = <?php echo $name; ?>;
+    var product = <?php echo $month; ?>;
     var barChartData = {
         labels: product,
         datasets: [{
-            label: 'Dropshipper',
+            label: 'Sales(RM)',
             backgroundColor: "red",
             data: count
         }]
