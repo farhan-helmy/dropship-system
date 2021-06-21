@@ -46,7 +46,7 @@ class OrderController extends Controller
     {
         $month = Carbon::now();
 
-        $orders = Order::where('user_id', Auth::id())->whereMonth('created_at', $month->format('m'))->orderBy('created_at', 'desc');
+        $orders = Order::has('products')->where('user_id', Auth::id())->orderBy('created_at', 'desc');
 
         return DataTables::of($orders)
         ->editColumn('id', function ($orders) {

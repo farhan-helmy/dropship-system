@@ -36,14 +36,14 @@ class OrderController extends Controller
         ])
             ->ajax(route('admin.order.data'));
 
-        $pending = Order::where('status', 'Pending')->count();
+        $pending = Order::has('products')->where('status', 'Pending')->count();
        
         return view('order.index', compact('order', 'pending'));
     }
 
     public function data()
     {
-        $orders = Order::orderBy('created_at','desc');
+        $orders = Order::has('products')->orderBy('created_at','desc');
 
         return DataTables::of($orders)
             ->editColumn('action', function ($orders) {

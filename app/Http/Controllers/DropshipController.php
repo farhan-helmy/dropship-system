@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use DataTables;
 use Illuminate\Support\Facades\Hash;
@@ -125,7 +126,8 @@ class DropshipController extends Controller
 
     public function dataorder(Request $request)
     {
-        $order = Order::where('user_id', $request->input('key'))->get();
+        $month = Carbon::now();
+        $order = Order::where('user_id', $request->input('key'))->whereMonth('created_at', $month->format('m'))->orderBy('created_at', 'desc')->get();
 
         return DataTables::of($order)
             ->make();

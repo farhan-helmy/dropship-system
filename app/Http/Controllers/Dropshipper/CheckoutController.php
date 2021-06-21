@@ -55,6 +55,7 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
+        
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
 
@@ -84,6 +85,13 @@ class CheckoutController extends Controller
             $user = User::where('id', 1)->first();
 
             $product = Product::where('id', $id)->first();
+
+            if($product->stock < $qty)
+            {
+                return redirect()->route('ds.order.index')
+            ->with('success', 'Fail purchase, no stock');
+            }
+
             $new_value = $product->stock - $qty;
             $product->stock = $new_value;
             $product->save();
@@ -92,6 +100,8 @@ class CheckoutController extends Controller
 
             $order->products()->attach($id, ['total_price' => $price, 'quantity' => $qty]);
         }
+
+        
 
         $request->session()->forget('cart');
 
