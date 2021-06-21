@@ -43,7 +43,7 @@ class OrderController extends Controller
 
     public function data()
     {
-        $orders = Order::all();
+        $orders = Order::all()->orderBy('created_at', 'desc');
 
         return DataTables::of($orders)
             ->editColumn('action', function ($orders) {
