@@ -47,15 +47,9 @@
                                 <a href="#" class="text-dark text-hover-primary">{{ $product['item']['name'] }}</a>
                             </td>
                             <td class="text-center align-middle">
-                                <a href="{{ route('ds.cart.reduceByOne', ['id' => $product['item']['id']]) }}"
-                                    class="btn btn-xs btn-light-success btn-icon mr-2">
-                                    <i class="ki ki-minus icon-xs"></i>
-                                </a>
+                              
                                 <span class="mr-2 font-weight-bolder">{{ $product['qty'] }}</span>
-                                <a href="{{ route('ds.cart.addToCart', ['product' => $product['item']['id']]) }}"
-                                    class="btn btn-xs btn-light-success btn-icon">
-                                    <i class="ki ki-plus icon-xs"></i>
-                                </a>
+                              
                             </td>
                             <td class="text-right align-middle font-weight-bolder font-size-h5">
                                 RM{{ $product['price'] }}</td>
