@@ -62,7 +62,9 @@
                             </div>
                             <div class="overlay-layer">
                                 <a href="{{route('ds.product.show', ['product' => $product->id])}}" class="btn font-weight-bolder btn-sm btn-primary mr-2">Quick View</a>
+                                @if ($product->stock !== 0)
                                 <a href="{{ route('ds.product.addToCart', ['product' => $product->id]) }}" class="btn font-weight-bolder btn-sm btn-light-primary">Add to cart</a>
+                                @endif        
                             </div>
                         </div>
                         <!--end::Image-->

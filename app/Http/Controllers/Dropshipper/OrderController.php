@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dropshipper;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Html\Builder;
 use DataTables;
@@ -43,7 +44,9 @@ class OrderController extends Controller
 
     public function data()
     {
-        $orders = Order::where('user_id', Auth::id())->orderBy('created_at', 'desc');
+        $month = Carbon::now();
+
+        $orders = Order::where('user_id', Auth::id())->whereMonth('created_at', $month->format('m'))->orderBy('created_at', 'desc');
 
         return DataTables::of($orders)
         ->editColumn('id', function ($orders) {
