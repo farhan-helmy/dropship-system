@@ -57,6 +57,7 @@
                                                 <td class="text-primary pr-0 pt-7 text-right align-middle">RM
                                                     {{$product->pivot->total_price}}</td>
                                             </tr>
+                                            @endforeach
                                             <tr>
                                                 <td colspan="2" class="border-0 pt-0"></td>
                                                 <td class="border-0 pt-0 font-weight-bolder font-size-h5 text-right">
@@ -65,8 +66,6 @@
                                                     class="border-0 pt-0 font-weight-bolder font-size-h5 text-success text-right pr-0">
                                                     RM {{$go}}</td>
                                             </tr>
-                                            @endforeach
-
                                         </tbody>
                                     </table>
                                 </div>

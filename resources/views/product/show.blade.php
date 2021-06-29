@@ -12,7 +12,7 @@
                     <div class="card-body px-12 py-10">
                     <img src="{{ $product->getFirstMediaUrl() }}" alt="" style="width: 250px; height: 250px; border-radius: 50%;">
                         <h3 class="font-weight-bolder font-size-h2 mb-1">
-                            <a href="#" class="text-dark-75">{{$product->name}}</a>
+                        <a href="#" class="text-dark-75">{{$product->name}}</a>
                         </h3>
                         <div class="text-primary font-size-h4 mb-9">MYR {{$product->price}}</div>
                         <div class="font-size-sm mb-8">{{$product->description}}</div>

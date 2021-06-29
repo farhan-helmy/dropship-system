@@ -71,7 +71,7 @@
         labels: product,
         datasets: [{
             label: 'Sales(RM)',
-            backgroundColor: "red",
+            backgroundColor: "blue",
             data: count
         }]
     };

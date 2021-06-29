@@ -17,10 +17,12 @@ class AuthController extends Controller
     {
         $credentials = $request->only('email', 'password');
         // $test = Auth::attempt($credentials);
-        // dd($test);
+        // dd($test);\
         if (Auth::attempt($credentials)) {
 
             $user = User::where('email', $request->email)->first();
+
+            //SELECT * FROM users WHERE 'email' LIKE 'afifah@gmail.com' LIMIT 1;
 
             $roles = $user->getRoleNames();
 
