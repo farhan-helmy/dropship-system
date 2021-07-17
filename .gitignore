@@ -12,3 +12,7 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+data.ms/main/data.mdb
+data.ms/main/lock.mdb
+data.ms/update/data.mdb
+data.ms/update/lock.mdb

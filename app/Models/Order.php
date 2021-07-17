@@ -6,12 +6,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Laravel\Scout\Searchable;
 use DateTimeInterface;
 
 class Order extends Model implements HasMedia
 {
     use InteractsWithMedia;
     use HasFactory;
+    use Searchable;
 
     protected $guarded = [];
 
@@ -24,5 +26,4 @@ class Order extends Model implements HasMedia
     {
         return $date->format('Y-m-d H:i:s');
     }
-
 }
