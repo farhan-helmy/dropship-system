@@ -4,19 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\Product;
-use App\Models\User;
 use Illuminate\Http\Request;
-use DataTables;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
-use Stringable;
+use Yajra\DataTables\Facades\DataTables;
 use Yajra\DataTables\Html\Builder;
-
-
 
 class ProductController extends Controller
 {
-   
     /**
      * Display a listing of the resource.
      *
@@ -47,6 +40,7 @@ class ProductController extends Controller
             ->ajax(route('admin.product.data'));
 
         $pending = Order::where('status', 'Pending')->count();
+
         return view('product.index', compact('product','pending'));
     }
 
@@ -103,23 +97,26 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-
-        $request->validate([
+        $data = $request->validate([
+            'name' => 'required|string',
+            'stock' => 'required|integer|min:0',
+            'description' => 'required|string',
+            'price' => 'required|numeric|min:0',
             'product_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
-        $product = new Product();
-        $product->name = $request->name;
-        $product->stock = $request->stock;
-        $product->price = $request->price;
-        $product->description = $request->description;
-        $product->save();
+        $product = Product::create(
+            collect($data)
+                ->only(['name', 'stock', 'description', 'price'])
+                ->toArray()
+        );
 
         $product
-        ->addMediaFromRequest('product_image')
-        ->toMediaCollection();
+            ->addMediaFromRequest('product_image')
+            ->toMediaCollection();
 
-        return redirect()->route('admin.product.index')
+        return redirect()
+            ->route('admin.product.index')
             ->with('success', 'Product registered successfully!');
     }
 
@@ -132,6 +129,7 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         $pending = Order::where('status', 'Pending')->count();
+
         return view('product.show', compact('product', 'pending'));
     }
 
@@ -157,54 +155,48 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        if($request->product_image == NULL){
-            
-            $request->validate([
+        if ($request->product_image == NULL)
+        {
+            $data = $request->validate([
+                'name' => 'required|string',
+                'stock' => 'required|integer|min:0',
+                'description' => 'required|string',
+                'price' => 'required|numeric|min:0',
                 'product_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
             ]);
-    
-            $product->name = $request->name;
-            $product->stock = $request->stock;
-            $product->price = $request->price;
-            $product->description = $request->description;
-    
-            $product->save();
-    
+
+            $product->update($data);
+
             $product
-            ->addMediaFromRequest('product_image')
-            ->toMediaCollection();
-    
-    
-            return redirect()->route('admin.product.index')
+                ->addMediaFromRequest('product_image')
+                ->toMediaCollection();
+
+            return redirect()
+                ->route('admin.product.index')
                 ->with('success', 'Product updated successfully!');
-        }else{
-        
-            $media = $product->getFirstMedia();
-            $d = $media->delete();
-            //dd($d);
-            $request->validate([
-                'product_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
-            ]);
-    
-            $product->name = $request->name;
-            $product->stock = $request->stock;
-            $product->price = $request->price;
-            $product->description = $request->description;
-    
-            $product->save();
-    
-            $product
-            ->addMediaFromRequest('product_image')
-            ->toMediaCollection();
-    
-    
-            return redirect()->route('admin.product.index')
-                ->with('success', 'Product updated successfully!');
-            
-            
         }
 
-      
+        else
+        {
+            $product->getFirstMedia()->delete();
+
+            $data = $request->validate([
+                'name' => 'required|string',
+                'stock' => 'required|integer|min:0',
+                'description' => 'required|string',
+                'price' => 'required|numeric|min:0',
+                'product_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            ]);
+
+            $product->update($data);
+
+            $product
+                ->addMediaFromRequest('product_image')
+                ->toMediaCollection();
+
+            return redirect()->route('admin.product.index')
+                ->with('success', 'Product updated successfully!');
+        }
     }
 
     /**
@@ -217,7 +209,8 @@ class ProductController extends Controller
     {
         $product->delete();
 
-        return redirect()->route('admin.product.index')
-        ->with('success', 'Product deleted successfully!');
+        return redirect()
+            ->route('admin.product.index')
+            ->with('success', 'Product deleted successfully!');
     }
 }

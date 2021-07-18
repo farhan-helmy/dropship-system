@@ -11,15 +11,15 @@ use DateTimeInterface;
 
 class Order extends Model implements HasMedia
 {
-    use InteractsWithMedia;
-    use HasFactory;
-    use Searchable;
+    use InteractsWithMedia, HasFactory, Searchable;
 
     protected $guarded = [];
 
     public function products()
     {
-        return $this->belongsToMany(Product::class, 'product_orders')->withPivot('total_price', 'quantity')->withTimestamps();
+        return $this->belongsToMany(Product::class, 'product_orders')
+            ->withPivot('total_price', 'quantity')
+            ->withTimestamps();
     }
 
     protected function serializeDate(DateTimeInterface $date)

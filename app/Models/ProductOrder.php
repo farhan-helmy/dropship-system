@@ -10,6 +10,5 @@ class ProductOrder extends Model
 {
     use HasFactory, Searchable;
 
-    protected $guarded = [];
-    
+    protected $fillable = ['quantity'];
 }
