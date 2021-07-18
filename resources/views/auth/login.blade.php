@@ -181,7 +181,7 @@ License: You must have a valid license purchased only from themeforest(the above
 					<div class="d-flex flex-column justify-content-center text-center pt-lg-40 pt-md-5 pt-sm-5 px-lg-0 pt-5 px-7">
 						<h3 class="display4 font-weight-bolder my-7 text-dark" style="color: #986923;">Dropship Management System</h3>
 						<p class="font-weight-bolder font-size-h2-md font-size-lg text-dark opacity-70">for
-						<br />Jwlsyerv Enterprise</p>
+						<br />{{tenant('id')}}</p>
 					</div>
 					<!--end::Title-->
 					<!--begin::Image-->
