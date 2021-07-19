@@ -28,7 +28,9 @@ use App\Http\Controllers\SaleController;
 | Feel free to customize them however you want. Good luck!
 |
 */
-
+Route::get('/', function () {
+    return "gigachad";
+});
 Route::middleware([
     'web',
     InitializeTenancyByDomain::class,
