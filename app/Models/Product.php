@@ -7,14 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 use DateTimeInterface;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
-use Illuminate\Notifications\Notifiable;
 
 class Product extends Model implements HasMedia
 {
-    use HasFactory;
-    use InteractsWithMedia;
+    use HasFactory, InteractsWithMedia;
 
-    protected $guarded = [];
+    protected $fillable = ['name', 'stock', 'description', 'price'];
 
     public function orders()
     {
@@ -25,6 +23,4 @@ class Product extends Model implements HasMedia
     {
         return $date->format('Y-m-d H:i:s');
     }
-
-    
 }
