@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Models\Tenant;
+use App\Models\User;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Cashier\Cashier;
@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Cashier::useCustomerModel(Tenant::class);
+        Cashier::useCustomerModel(User::class);
 
         Event::listen(TenancyBootstrapped::class, function (TenancyBootstrapped $event) {
             \Spatie\Permission\PermissionRegistrar::$cacheKey = 'spatie.permission.cache.tenant.' . $event->tenancy->tenant->id;
