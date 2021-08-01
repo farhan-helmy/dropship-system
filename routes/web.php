@@ -2,16 +2,7 @@
 
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\DropshipController;
-use App\Http\Controllers\Dropshipper\CheckoutController as DropshipperCheckoutController;
-use App\Http\Controllers\Dropshipper\DashboardController as DropshipperDashboardController;
-use App\Http\Controllers\Dropshipper\OrderController as DropshipperOrderController;
-use App\Http\Controllers\Dropshipper\ProductController as DropshipperProductController;
-use App\Http\Controllers\Dropshipper\ShoppingCartController as DropshipperShoppingCartController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\SaleController;
+use App\Http\Controllers\Main\MainController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +15,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-    return "gigachadmoment";
-});
+Route::get('/', [MainController::class, 'index'])->name('index');
+Route::get('/register', [MainController::class, 'register'])->name('register');
+Route::post('/register', [MainController::class, 'store'])->name('register');

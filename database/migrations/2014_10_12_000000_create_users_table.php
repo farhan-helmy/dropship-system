@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('phone_no');
-            $table->bigInteger('nric');
+            //$table->bigInteger('nric');
             $table->string('status');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
