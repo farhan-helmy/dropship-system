@@ -8,10 +8,11 @@ use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 use Laravel\Cashier\Billable;
 use DateTimeInterface;
+use App\Traits\Uuids;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable, HasRoles, Notifiable, Billable;
+    use HasFactory, Notifiable, HasRoles, Notifiable, Billable, Uuids;
 
     protected $fillable = [
         'name',

@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "aws/aws-sdk-php": "^3.188",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
@@ -16,6 +17,7 @@
         "laravel/scout": "^9.2",
         "laravel/tinker": "^2.6",
         "meilisearch/meilisearch-php": "^0.18.3",
+        "ramsey/uuid": "^4.2",
         "spatie/laravel-medialibrary": "^9.0.0",
         "spatie/laravel-permission": "^4.0",
         "stancl/tenancy": "^3.4",

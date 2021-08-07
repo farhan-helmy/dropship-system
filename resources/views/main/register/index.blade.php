@@ -78,6 +78,8 @@ License: You must have a valid license purchased only from themeforest(the above
                 class="login-content flex-row-fluid d-flex flex-column justify-content-center position-relative overflow-hidden p-7 mx-auto">
                 <!--begin::Content body-->
                 <div class="d-flex flex-column-fluid flex-center">
+
+
                     <!--begin::Signin-->
                     {{-- <div class="login-form login-signin">
 							<!--begin::Form-->
@@ -115,75 +117,158 @@ License: You must have a valid license purchased only from themeforest(the above
                     <!--end::Signin-->
                     <!--begin::Signup-->
                     <div class="login-form login-signin">
+                        @if ($errors->any())
+                            <div class="d-flex flex-column-fluid flex-center alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        @if (session()->has('success'))
+                            <div class="d-flex flex-column-fluid flex-center alert alert-success">
+                                <ul>
+                                    <li>{{ session()->get('success') }}</li>
+                                </ul>
+                            </div>
+                        @endif
                         <!--begin::Form-->
-                        <form class="form" novalidate="novalidate" id="kt_login_signup_form" action="{{ route('register') }}" method="POST">
-                            @method('POST')
-                            @csrf
-                            <!--begin::Title-->
+                        @if (request()->routeIs('register'))
+                            <form class="form" novalidate="novalidate" id="kt_login_signup_form"
+                                action="{{ route('register') }}" method="POST">
+                                @method('POST')
+                                @csrf
+                                <!--begin::Title-->
+                                <div class="pb-13 pt-lg-0 pt-5">
+                                    <h3 class="font-weight-bolder text-dark font-size-h4 font-size-h1-lg">Daftar</h3>
+                                    <p class="text-muted font-weight-bold font-size-h4">Isi maklumat anda untuk membuat
+                                        akaun</p>
+                                    <p class="text-muted font-weight-bold font-size-h4">Ada akaun?
+                                        <a href="{{ route('login') }}" class="text-primary font-weight-bolder">Log
+                                            Masuk</a>
+                                    </p>
+                                </div>
+                                <!--end::Title-->
+                                <!--begin::Form group-->
+                                <div class="form-group">
+                                    <input
+                                        class="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6"
+                                        type="text" placeholder="Nama Penuh" name="name" autocomplete="off" />
+                                </div>
+                                <!--end::Form group-->
+                                <!--begin::Form group-->
+                                <div class="form-group">
+                                    <input
+                                        class="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6"
+                                        type="email" placeholder="Email" name="email" autocomplete="off" />
+                                </div>
+                                <!--end::Form group-->
+                                <!--begin::Form group-->
+                                <div class="form-group">
+                                    <input
+                                        class="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6"
+                                        type="email" placeholder="Phone number" name="phone_no" autocomplete="off" />
+                                </div>
+                                <!--end::Form group-->
+                                <!--begin::Form group-->
+                                <div class="form-group">
+                                    <input
+                                        class="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6"
+                                        type="password" placeholder="Password" name="password" autocomplete="off" />
+                                </div>
+                                <!--end::Form group-->
+                                <!--begin::Form group-->
+                                <div class="form-group">
+                                    <input
+                                        class="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6"
+                                        type="password" placeholder="Konfirm password" name="cpassword"
+                                        autocomplete="off" />
+                                </div>
+                                <div class="form-group">
+                                    <input
+                                        class="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6"
+                                        type="text" placeholder="Isi nama kedai anda" name="domainname"
+                                        autocomplete="off" />
+                                </div>
+                                <!--end::Form group-->
+                                <!--begin::Form group-->
+                                <div class="form-group">
+                                    <label class="checkbox mb-0">
+                                        <input type="checkbox" name="agree" />
+                                        <span></span>
+                                        <div class="ml-2">I Agree the
+                                            <a href="#">terms and conditions</a>.
+                                        </div>
+                                    </label>
+                                </div>
+                                <!--end::Form group-->
+                                <!--begin::Form group-->
+                                <div class="form-group d-flex flex-wrap pb-lg-0 pb-3">
+                                    <button type="submit" id="kt_login_signup_submit"
+                                        class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-4">Hantar</button>
+                                    <a href="{{ route('index') }}"
+                                        class="btn btn-light-primary font-weight-bolder font-size-h6 px-8 py-4 my-3">Laman
+                                        Utama</a>
+                                </div>
+                                <!--end::Form group-->
+                            </form>
+                            <!--end::Form-->
+                        @elseif (request()->routeIs('verify'))
                             <div class="pb-13 pt-lg-0 pt-5">
-                                <h3 class="font-weight-bolder text-dark font-size-h4 font-size-h1-lg">Daftar</h3>
-                                <p class="text-muted font-weight-bold font-size-h4">Isi maklumat anda untuk membuat
-                                    akaun</p>
+                                <h3 class="font-weight-bolder text-dark font-size-h4 font-size-h1-lg">Sahkan</h3>
+                                <p class="text-muted font-weight-bold font-size-h4">Kami sudah menghantar email
+                                    pengesahan. Sila sahkan email anda.</p>
                             </div>
-                            <!--end::Title-->
-                            <!--begin::Form group-->
-                            <div class="form-group">
-                                <input class="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6"
-                                    type="text" placeholder="Nama Penuh" name="name" autocomplete="off" />
-                            </div>
-                            <!--end::Form group-->
-                            <!--begin::Form group-->
-                            <div class="form-group">
-                                <input class="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6"
-                                    type="email" placeholder="Email" name="email" autocomplete="off" />
-                            </div>
-                            <!--end::Form group-->
-                             <!--begin::Form group-->
-                             <div class="form-group">
-                                <input class="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6"
-                                    type="email" placeholder="Phone number" name="phone_no" autocomplete="off" />
-                            </div>
-                            <!--end::Form group-->
-                            <!--begin::Form group-->
-                            <div class="form-group">
-                                <input class="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6"
-                                    type="password" placeholder="Password" name="password" autocomplete="off" />
-                            </div>
-                            <!--end::Form group-->
-                            <!--begin::Form group-->
-                            <div class="form-group">
-                                <input class="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6"
-                                    type="password" placeholder="Konfirm password" name="cpassword"
-                                    autocomplete="off" />
-                            </div>
-                            <div class="form-group">
-                                <input class="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6"
-                                    type="text" placeholder="Isi nama kedai anda" name="domainname"
-                                    autocomplete="off" />
-                            </div>
-                            <!--end::Form group-->
-                            <!--begin::Form group-->
-                            <div class="form-group">
-                                <label class="checkbox mb-0">
-                                    <input type="checkbox" name="agree" />
-                                    <span></span>
-                                    <div class="ml-2">I Agree the
-                                        <a href="#">terms and conditions</a>.
-                                    </div>
-                                </label>
-                            </div>
-                            <!--end::Form group-->
-                            <!--begin::Form group-->
                             <div class="form-group d-flex flex-wrap pb-lg-0 pb-3">
-                                <button type="submit" id="kt_login_signup_submit"
-                                    class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-4">Hantar</button>
+                                <a href="{{ route('login') }}"
+                                    class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-4">Log
+                                    masuk</a>
                                 <a href="{{ route('index') }}"
                                     class="btn btn-light-primary font-weight-bolder font-size-h6 px-8 py-4 my-3">Laman
                                     Utama</a>
                             </div>
-                            <!--end::Form group-->
-                        </form>
-                        <!--end::Form-->
+                        @elseif (request()->routeIs('login'))
+                            <form class="form" novalidate="novalidate" id="kt_login_signup_form"
+                                action="{{ route('login') }}" method="POST">
+                                @method('POST')
+                                @csrf
+                                <!--begin::Title-->
+                                <div class="pb-13 pt-lg-0 pt-5">
+                                    <h3 class="font-weight-bolder text-dark font-size-h4 font-size-h1-lg">Log masuk</h3>
+                                    <span class="text-muted font-weight-bold font-size-h4">Baru disini?
+                                        <a href="{{ route('register') }}"
+                                            class="text-primary font-weight-bolder">Cipta Akaun</a></span>
+                                </div>
+                                <!--end::Title-->
+                                <!--begin::Form group-->
+                                <div class="form-group">
+                                    <input
+                                        class="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6"
+                                        type="email" placeholder="Email" name="email" autocomplete="off" />
+                                </div>
+                                <!--end::Form group-->
+                                <!--begin::Form group-->
+                                <div class="form-group">
+                                    <input
+                                        class="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6"
+                                        type="password" placeholder="Kata laluan" name="password" autocomplete="off" />
+                                </div>
+                                <!--end::Form group-->
+                                <!--end::Form group-->
+                                <!--begin::Form group-->
+                                <div class="form-group d-flex flex-wrap pb-lg-0 pb-3">
+                                    <button type="submit" id="kt_login_signup_submit"
+                                        class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-4">Log
+                                        Masuk</button>
+                                    <a href="{{ route('index') }}"
+                                        class="btn btn-light-primary font-weight-bolder font-size-h6 px-8 py-4 my-3">Laman
+                                        Utama</a>
+                                </div>
+                                <!--end::Form group-->
+                            </form>
+                        @endif
+
                     </div>
                     <!--end::Signup-->
                     <!--begin::Forgot-->

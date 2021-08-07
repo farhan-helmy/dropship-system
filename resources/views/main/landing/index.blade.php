@@ -62,8 +62,11 @@
                     <li><a class="nav-link scrollto" href="#contact">Kontak</a></li>
                     <li class="dropdown"><a href="#"><span>Klik Sini</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
-                            <li><a href="#">Log Masuk</a></li>
-                            {{-- <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i
+                            @auth
+                                <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                            @else
+                                <li><a href="{{ route('login') }}">Log Masuk</a></li>
+                                {{-- <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i
                                         class="bi bi-chevron-right"></i></a>
                                 <ul>
                                     <li><a href="#">Deep Drop Down 1</a></li>
@@ -73,9 +76,11 @@
                                     <li><a href="#">Deep Drop Down 5</a></li>
                                 </ul>
                             </li> --}}
-                            <li><a href="{{ route('register') }}">Daftar</a></li>
-                            <li><a href="#">Feedback</a></li>
-                            {{-- <li><a href="#">Drop Down 4</a></li> --}}
+                                <li><a href="{{ route('register') }}">Daftar</a></li>
+                                <li><a href="#">Feedback</a></li>
+                                {{-- <li><a href="#">Drop Down 4</a></li> --}}
+                            @endauth
+
                         </ul>
                     </li>
                 </ul>
@@ -823,50 +828,20 @@
                             <div class="email">
                                 <i class="bi bi-envelope"></i>
                                 <h4>Email:</h4>
-                                <p>farhanhlmy@gmail.com</p>
+                                <p>admin@penguindropship.com</p>
                             </div>
 
                             <div class="phone">
                                 <i class="bi bi-phone"></i>
                                 <h4>Whatsapp / Telefon:</h4>
-                                <p>+6014-338 1756</p>
+                                <a href="https://wasap.my/60143381756">
+                                    <p>+6014-338 1756 (Click)</p>
+                                </a>
                             </div>
 
                         </div>
 
                     </div>
-
-                    <div class="col-lg-8 mt-5 mt-lg-0" data-aos="fade-left">
-
-                        <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-                            <div class="row">
-                                <div class="col-md-6 form-group">
-                                    <input type="text" name="name" class="form-control" id="name"
-                                        placeholder="Your Name" required>
-                                </div>
-                                <div class="col-md-6 form-group mt-3 mt-md-0">
-                                    <input type="email" class="form-control" name="email" id="email"
-                                        placeholder="Your Email" required>
-                                </div>
-                            </div>
-                            <div class="form-group mt-3">
-                                <input type="text" class="form-control" name="subject" id="subject"
-                                    placeholder="Subject" required>
-                            </div>
-                            <div class="form-group mt-3">
-                                <textarea class="form-control" name="message" rows="5" placeholder="Message"
-                                    required></textarea>
-                            </div>
-                            <div class="my-3">
-                                <div class="loading">Loading</div>
-                                <div class="error-message"></div>
-                                <div class="sent-message">Your message has been sent. Thank you!</div>
-                            </div>
-                            <div class="text-center"><button type="submit">Send Message</button></div>
-                        </form>
-
-                    </div>
-
                 </div>
 
             </div>
