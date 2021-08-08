@@ -16,6 +16,7 @@ use App\Http\Controllers\Dropshipper\ShoppingCartController as DropshipperShoppi
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SaleController;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,8 @@ Route::middleware([
 
     Route::post('/login', [AuthController::class, 'login'])->name('login');
 
+    Route::post('/create-user', [DropshipController::class, 'createuser'])->name('createuser');
+    
     Route::middleware(['auth'])->group(function () {
 
         Route::prefix('admin')->name('admin.')->group(function () {

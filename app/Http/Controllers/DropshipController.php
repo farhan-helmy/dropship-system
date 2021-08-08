@@ -98,6 +98,23 @@ class DropshipController extends Controller
             ->with('success', 'Dropshipper registered successfully!');
     }
 
+    public function createuser(Request $request)
+    {
+        dd($request);
+       
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone_no = $request->phone_no;
+        $user->nric = $request->nric;
+        $user->password = $request->password;
+        $user->status = 'Active';
+        $user->assignRole('boss');
+
+        $user->save();
+
+    }
+
     /**
      * Display the specified resource.
      *

@@ -10,7 +10,7 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="{{ asset('assets/img/dsad.png') }}" rel="icon">
+    <link href="{{ asset('mainassets/img/peng.png') }}" rel="icon" type="image/png" sizes="32x32">
     <link href="{{ asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
@@ -63,7 +63,7 @@
                     <li class="dropdown"><a href="#"><span>Klik Sini</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
                             @auth
-                                <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                                <li><a href="{{ route('dashboard.index') }}">Dashboard</a></li>
                             @else
                                 <li><a href="{{ route('login') }}">Log Masuk</a></li>
                                 {{-- <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i

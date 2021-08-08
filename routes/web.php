@@ -30,7 +30,11 @@ Route::middleware(['web'])->group(function () {
     Route::get('/testmail', [MainController::class, 'testmail'])->name('testmail');
 
     Route::middleware(['auth'])->group(function () {
-        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        
+        Route::prefix('dashboard')->name('dashboard.')->group(function () {
+            Route::get('', [DashboardController::class, 'index'])->name('index');
+            Route::post('', [DashboardController::class, 'registeruser'])->name('registeruser');
+        });
         Route::post('', [MainController::class, 'destroy'])->name('logout');
     });
 });

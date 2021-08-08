@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Main;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 
 class DashboardController extends Controller
 {
@@ -17,6 +20,26 @@ class DashboardController extends Controller
         return view('main.dashboard.index');
     }
 
+    public function registeruser(Request $request)
+    {
+        $user = User::where('id', $request->id)->first();
+
+        $user->status = 'done';
+        $user->save();
+
+        $link = 'http://'.$user->domain_name.'.localhost/create_user';
+
+        $post = Http::post($link , [
+            'name' => $user->name,
+            'email' => $user->email,
+            'password' => $user->password,
+            'phone_no' => $user->phone_no,
+            'nric' => '-',
+        ]);
+
+        return redirect()->route('dashboard.index')
+        ->with('success', 'Pengguna sistem anda telah di create.');
+    }
     /**
      * Show the form for creating a new resource.
      *
