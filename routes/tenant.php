@@ -29,9 +29,18 @@ use Illuminate\Http\Request;
 | Feel free to customize them however you want. Good luck!
 |
 */
+
 Route::get('/', function () {
     return "gigachad";
 });
+
+Route::middleware([
+    'api',
+    InitializeTenancyByDomain::class
+])->group(function () {
+    Route::post('/create-user', [DropshipController::class, 'createuser'])->name('createuser');
+});
+
 Route::middleware([
     'web',
     InitializeTenancyByDomain::class,
@@ -42,7 +51,7 @@ Route::middleware([
     Route::post('/login', [AuthController::class, 'login'])->name('login');
 
     Route::post('/create-user', [DropshipController::class, 'createuser'])->name('createuser');
-    
+
     Route::middleware(['auth'])->group(function () {
 
         Route::prefix('admin')->name('admin.')->group(function () {

@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Main;
 
 use App\Http\Controllers\Controller;
+use App\Models\Tenant;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
+use Spatie\Permission\Models\Role;
 
 class DashboardController extends Controller
 {
@@ -27,18 +29,27 @@ class DashboardController extends Controller
         $user->status = 'done';
         $user->save();
 
-        $link = 'http://'.$user->domain_name.'.localhost/create_user';
+        $tenant = Tenant::where('id', $user->domain_name)->first();
 
-        $post = Http::post($link , [
-            'name' => $user->name,
-            'email' => $user->email,
-            'password' => $user->password,
-            'phone_no' => $user->phone_no,
-            'nric' => '-',
-        ]);
+        $tenant->run(function () {
+            
+            Role::create(['name' => 'boss']);
+            Role::create(['name' => 'ds']);
+
+            $user = new User();
+            $user->name = 'mainuser';
+            $user->email = 'testemail@penguindropship.com';
+            $user->phone_no = 'Please update your phone number';
+            $user->nric = '1234';
+            $user->password = Hash::make('password');
+            $user->status = 'Active';
+            $user->assignRole('boss');
+
+            $user->save();
+        });
 
         return redirect()->route('dashboard.index')
-        ->with('success', 'Pengguna sistem anda telah di create.');
+            ->with('success', 'Pengguna sistem anda telah di cipta Username: testemail@penguindropship.com password: password ');
     }
     /**
      * Show the form for creating a new resource.
