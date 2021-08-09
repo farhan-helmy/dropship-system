@@ -76,7 +76,7 @@
                     </div>
                     <div class="form-group">
                         <label>Nric <span class="text-danger">*</span></label>
-                        <input type="number" class="form-control" placeholder="Enter phone no" name="nric" />
+                        <input type="number" class="form-control" placeholder="Enter ic number" name="nric" />
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password <span class="text-danger">*</span></label>

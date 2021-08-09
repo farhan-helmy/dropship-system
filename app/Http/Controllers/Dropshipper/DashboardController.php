@@ -22,14 +22,6 @@ class DashboardController extends Controller
         $checking  = Order::where('user_id', Auth::id())->count();
 
         $user = User::where('id', Auth::id())->first();
-        $boss = User::where('id', 1)->first();
-        //dd($user->is_hit);
-        if($checking >= 10 && $user->is_hit == 0)
-        {
-            $boss->notify(new OrderHit($user->name));
-            $user->is_hit = 1;
-            $user->save();
-        }
         
         return view('ds.dashboard.index');
     }

@@ -82,7 +82,7 @@ class CheckoutController extends Controller
             $price = $items['price'];
             $id = $items['item']['id'];
             $name = $items['item']['name'];
-            $user = User::where('id', 1)->first();
+            //$user = User::where('id', 1)->first();
 
             $product = Product::where('id', $id)->first();
 
@@ -96,7 +96,7 @@ class CheckoutController extends Controller
             $product->stock = $new_value;
             $product->save();
 
-            $user->notify(new StockLow($name));
+            //$user->notify(new StockLow($name));
 
             $order->products()->attach($id, ['total_price' => $price, 'quantity' => $qty]);
         }
