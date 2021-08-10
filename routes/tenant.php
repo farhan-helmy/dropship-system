@@ -50,7 +50,7 @@ Route::middleware([
 
     Route::post('/login', [AuthController::class, 'login'])->name('login');
 
-    Route::post('/create-user', [DropshipController::class, 'createuser'])->name('createuser');
+    //Route::post('/create-user', [DropshipController::class, 'createuser'])->name('createuser');
 
     Route::middleware(['auth'])->group(function () {
 

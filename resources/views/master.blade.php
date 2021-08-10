@@ -24,7 +24,7 @@
     <link href="{{ asset('assets/css/themes/layout/brand/dark.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/themes/layout/aside/dark.css') }}" rel="stylesheet" type="text/css" />
     <!--end::Layout Themes-->
-    <link rel="shortcut icon" href="{{ asset('assets/favicon.ico') }}" />
+    <link rel="shortcut icon" href="{{ asset('mainassets/img/peng.png') }}" />
     <!-- Styles -->
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>

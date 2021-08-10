@@ -34,6 +34,8 @@ Route::middleware(['web'])->group(function () {
         Route::prefix('dashboard')->name('dashboard.')->group(function () {
             Route::get('', [DashboardController::class, 'index'])->name('index');
             Route::post('', [DashboardController::class, 'registeruser'])->name('registeruser');
+
+            Route::get('getcsv', [DashboardController::class, 'generateCsv'])->name('getcsv');
         });
         Route::post('', [MainController::class, 'destroy'])->name('logout');
     });

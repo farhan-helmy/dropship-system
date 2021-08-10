@@ -39,6 +39,11 @@ class MainController extends Controller
         //
     }
 
+    public function testmail()
+    {
+        Mail::to('farhanhlmy@gmail.com')->send(new VerifyUser('testing123'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *

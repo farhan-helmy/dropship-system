@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Str;
 
 class DashboardController extends Controller
 {
@@ -24,33 +25,35 @@ class DashboardController extends Controller
 
     public function registeruser(Request $request)
     {
-        $user = User::where('id', $request->id)->first();
+        $userino = User::where('id', $request->id)->first();
 
-        $user->status = 'done';
-        $user->save();
+        $userino->status = 'done';
+        $userino->save();
 
-        $tenant = Tenant::where('id', $user->domain_name)->first();
+        $tenant = Tenant::where('id', $userino->domain_name)->first();
 
-        $tenant->run(function () {
-            
-            Role::create(['name' => 'boss']);
-            Role::create(['name' => 'ds']);
+        $tenant->run(function () use ($userino) {
+
+            // Role::create(['name' => 'boss']);
+            // Role::create(['name' => 'ds']);
 
             $user = new User();
-            $user->name = 'mainuser';
-            $user->email = 'testemail@penguindropship.com';
-            $user->phone_no = 'Please update your phone number';
+            $user->name = $userino->name;
+            $user->email = $userino->email;
+            $user->phone_no = $userino->phone_no;
             $user->nric = '1234';
-            $user->password = Hash::make('password');
+            $user->password = $userino->password;
             $user->status = 'Active';
             $user->assignRole('boss');
 
             $user->save();
         });
+        $message = "User berjaya dicipta! sila gunakan email dan password yang sama untuk login ke sistem anda.";
 
         return redirect()->route('dashboard.index')
-            ->with('success', 'Pengguna sistem anda telah di cipta Username: testemail@penguindropship.com password: password ');
+            ->with('success', $message);
     }
+
     /**
      * Show the form for creating a new resource.
      *

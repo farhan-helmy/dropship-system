@@ -3,7 +3,7 @@
     <div class="brand flex-column-auto" id="kt_brand">
         <!--begin::Logo-->
         <a href="index.html" class="brand-logo">
-            <img alt="Logo" src="{{ asset('images/logo.png') }}" style="width:50px;height:50px;" />
+            <img alt="Logo" src="{{ asset('image/peng.png') }}" style="width:50px;height:50px;" />
 
         </a>
         <!--end::Logo-->

@@ -21,14 +21,15 @@
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
+                @if (session()->has('success'))
+                    <div class="d-flex flex-column-fluid flex-center alert alert-success">
+                        <ul>
+                            <li>{{ session()->get('success') }}</li>
+                            
+                        </ul>
+                    </div>
+                @endif
                 <div class="row">
-                    @if (session()->has('success'))
-                        <div class="d-flex flex-column-fluid flex-center alert alert-success">
-                            <ul>
-                                <li>{{ session()->get('success') }}</li>
-                            </ul>
-                        </div>
-                    @endif
                     <div class="col">
                         <div class="card">
                             <div class="card-header">
@@ -78,10 +79,15 @@
                                                 </div>
                                             </div>
                                             <!-- /.card-body -->
-
-                                            <div class="card-footer">
-                                                <button type="submit" class="btn btn-primary">Cipta pengguna</button>
-                                            </div>
+                                            @if (Auth::user()->status == 'done')
+                                                <div class="card-footer">
+                                                    <a class="btn btn-secondary disabled">Pengguna telah dicipta</a>
+                                                </div>
+                                            @else
+                                                <div class="card-footer">
+                                                    <button type="submit" class="btn btn-primary">Cipta pengguna</button>
+                                                </div>
+                                            @endif
                                         </form>
                                     </div>
                                 </div>
@@ -98,13 +104,3 @@
         <!-- /.content -->
     </div>
 @endsection
-
-@push('scripts')
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script>
-        axios.post('http://kedaifarhan.localhost', data)
-            .then(res => {
-                console.log(res)
-            })
-    </script>
-@endpush
