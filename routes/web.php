@@ -20,7 +20,7 @@ use Stancl\Tenancy\Middleware\InitializeTenancyByDomain;
 */
 
 Route::middleware(['web'])->group(function () {
-    Route::get('/home', [MainController::class, 'index'])->name('index');
+    Route::get('/', [MainController::class, 'index'])->name('index');
     Route::get('/register', [MainController::class, 'register'])->name('register');
     Route::post('/register', [MainController::class, 'store'])->name('register');
     Route::get('/login', [MainController::class, 'register'])->name('login');
