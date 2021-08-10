@@ -18,7 +18,6 @@ return [
      */
     'central_domains' => [
         'dev.penguindropship.com'
-        '52.221.243.187'
     ],
 
     /**
