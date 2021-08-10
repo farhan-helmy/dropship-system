@@ -21,4 +21,4 @@ jobs:
         username: ubuntu
         host: 52.221.243.187
         key: ${{ secrets.KEY }}
-        script: 'cd /var/www/penguindropship && ./deploy.sh'
+        script: 'cd /var/www/dropshipsystem && ./deploy.sh'
