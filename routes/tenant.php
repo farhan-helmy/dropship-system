@@ -47,7 +47,7 @@ Route::middleware([
     PreventAccessFromCentralDomains::class,
 ])->group(function () {
     Route::get('/login', [AuthController::class, 'create'])->name('login');
-
+    Route::get('/', [AuthController::class, 'create'])->name('login');
     Route::post('/login', [AuthController::class, 'login'])->name('login');
 
     //Route::post('/create-user', [DropshipController::class, 'createuser'])->name('createuser');
