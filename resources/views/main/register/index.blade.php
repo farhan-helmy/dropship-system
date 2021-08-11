@@ -186,6 +186,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                         autocomplete="off" />
                                 </div>
                                 <div class="form-group">
+                                    <label>Sila isi nama kedai anda tanpa ada jarak <span class="text-danger">*</span></label>
                                     <input
                                         class="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6"
                                         type="text" placeholder="Isi nama kedai anda" name="domainname"
