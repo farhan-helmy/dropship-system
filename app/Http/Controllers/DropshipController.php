@@ -50,6 +50,7 @@ class DropshipController extends Controller
 
     public function data()
     {
+
         $dropshippers = User::role('ds')->get();
 
         return DataTables::of($dropshippers)
@@ -60,6 +61,7 @@ class DropshipController extends Controller
             })
             ->rawColumns(['action'])
             ->make();
+            
     }
 
     /**
@@ -82,8 +84,9 @@ class DropshipController extends Controller
     {
         $validated = $request->validate([
             'nric' => 'required|unique:users|max:12|min:12',
-            
+            'email' => 'required|unique:users'  
         ]);
+
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;

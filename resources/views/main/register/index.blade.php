@@ -78,8 +78,6 @@ License: You must have a valid license purchased only from themeforest(the above
                 class="login-content flex-row-fluid d-flex flex-column justify-content-center position-relative overflow-hidden p-7 mx-auto">
                 <!--begin::Content body-->
                 <div class="d-flex flex-column-fluid flex-center">
-
-
                     <!--begin::Signin-->
                     {{-- <div class="login-form login-signin">
 							<!--begin::Form-->
