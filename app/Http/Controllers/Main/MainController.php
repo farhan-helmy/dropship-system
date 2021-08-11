@@ -41,7 +41,7 @@ class MainController extends Controller
 
     public function testmail()
     {
-        Mail::to('farhanhlmy@gmail.com')->send(new VerifyUser('testing123'));
+        Mail::to('aiman.kamarudin97@gmail.com')->send(new VerifyUser('testing123'));
     }
 
     /**
@@ -55,7 +55,7 @@ class MainController extends Controller
         $data = $request->validate([
             'name' => 'required|string',
             'email' => 'required|email|unique:users,email',
-            'phone_no' => 'required|integer',
+            'phone_no' => 'required',
             'password' => 'required|min:8',
             'domainname' => 'required|unique:users,domain_name',
             'domainname' => 'required|unique:tenants,id',
