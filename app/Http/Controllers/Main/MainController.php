@@ -71,12 +71,12 @@ class MainController extends Controller
         $user->domain_name = $request->domainname;
         $user->save();
 
-        $link = 'http://localhost/verify/' . $user->id;
+        $link = 'http://penguindropship.com/verify/' . $user->id;
 
         Mail::to($request->email)->send(new VerifyUser($link));
 
         $tenant = Tenant::create(['id' => $request->domainname]);
-        $tenant->domains()->create(['domain' => $request->domainname . '.localhost']);
+        $tenant->domains()->create(['domain' => $request->domainname . '.penguindropship.com']);
 
         return redirect()->route('verify')
             ->with('success', 'Please verify your email.');
@@ -113,7 +113,7 @@ class MainController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('home');
+            return redirect()->intended('dashboard');
         }
 
         return back()->withErrors([

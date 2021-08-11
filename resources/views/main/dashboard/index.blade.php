@@ -50,8 +50,8 @@
                                         </div>
                                         <div id="collapseOne" class="collapse" data-parent="#accordion" style="">
                                             <div class="card-body">
-                                                <a href="http://{{ Auth::user()->domain_name }}.localhost">
-                                                    <p>http://{{ Auth::user()->domain_name }}.localhost</p>
+                                                <a href="http://{{ Auth::user()->domain_name }}.penguindropship.com">
+                                                    <p>http://{{ Auth::user()->domain_name }}.penguindropship.com</p>
                                                 </a>
                                             </div>
                                         </div>

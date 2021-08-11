@@ -34,8 +34,8 @@ class DashboardController extends Controller
 
         $tenant->run(function () use ($userino) {
 
-            // Role::create(['name' => 'boss']);
-            // Role::create(['name' => 'ds']);
+            Role::create(['name' => 'boss']);
+            Role::create(['name' => 'ds']);
 
             $user = new User();
             $user->name = $userino->name;
