@@ -16,3 +16,4 @@ data.ms/main/data.mdb
 data.ms/main/lock.mdb
 data.ms/update/data.mdb
 data.ms/update/lock.mdb
+config/tenancy.php

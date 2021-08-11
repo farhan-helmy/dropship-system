@@ -37,6 +37,7 @@ class OrderController extends Controller
                 'footer'         => '',
             ]
         ])
+            ->parameters(['responsive' => true])
             ->ajax(route('ds.order.data'));
 
         return view('ds.order.index', compact('order'));
