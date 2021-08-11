@@ -132,7 +132,5 @@ Route::middleware([
 
         Route::post('', [AuthController::class, 'destroy'])
             ->name('logout');
-        Route::get('/logout', [AuthController::class, 'destroy'])
-            ->name('logout');
     });
 });
