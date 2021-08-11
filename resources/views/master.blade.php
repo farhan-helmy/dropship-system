@@ -59,8 +59,8 @@
 <body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
     <div id="kt_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
         <!--begin::Logo-->
-        <a href="index.html">
-            <img alt="Logo" src="assets/media/logos/logo-light.png" />
+        <a href="{{ route('admin.dashboard.index') }}">
+            <img alt="Logo" src="{{ asset('image/peng.png') }}" style="width:50px;height:50px;" />
         </a>
         <!--end::Logo-->
         <!--begin::Toolbar-->
@@ -70,11 +70,6 @@
                 <span></span>
             </button>
             <!--end::Aside Mobile Toggle-->
-            <!--begin::Header Menu Mobile Toggle-->
-            <button class="btn p-0 burger-icon ml-4" id="kt_header_mobile_toggle">
-                <span></span>
-            </button>
-            <!--end::Header Menu Mobile Toggle-->
             <!--begin::Topbar Mobile Toggle-->
             <button class="btn btn-hover-text-primary p-0 ml-2" id="kt_header_mobile_topbar_toggle">
                 <span class="svg-icon svg-icon-xl">

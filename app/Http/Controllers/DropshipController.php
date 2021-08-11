@@ -40,6 +40,7 @@ class DropshipController extends Controller
                 'footer'         => '',
             ]
         ])
+            ->parameters(['responsive' => true])
             ->ajax(route('admin.dropshipper.data'));
 
         $pending = Order::where('status', 'Pending')->count();

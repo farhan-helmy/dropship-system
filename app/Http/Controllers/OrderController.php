@@ -34,6 +34,7 @@ class OrderController extends Controller
                 'footer'         => '',
             ]
         ])
+            ->parameters(['responsive' => true])
             ->ajax(route('admin.order.data'));
 
         $pending = Order::has('products')->where('status', 'Pending')->count();
