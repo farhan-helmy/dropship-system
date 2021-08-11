@@ -46,7 +46,7 @@ Route::middleware([
     InitializeTenancyByDomain::class,
     PreventAccessFromCentralDomains::class,
 ])->group(function () {
-    Route::get('/', [AuthController::class, 'create'])->name('login');
+    Route::get('/login', [AuthController::class, 'create'])->name('login');
 
     Route::post('/login', [AuthController::class, 'login'])->name('login');
 
@@ -131,6 +131,8 @@ Route::middleware([
         });
 
         Route::post('', [AuthController::class, 'destroy'])
+            ->name('logout');
+        Route::get('/logout', [AuthController::class, 'destroy'])
             ->name('logout');
     });
 });
