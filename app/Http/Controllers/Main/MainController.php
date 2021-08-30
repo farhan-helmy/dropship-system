@@ -60,7 +60,8 @@ class MainController extends Controller
             'domainname' => 'required|unique:users,domain_name',
             'domainname' => 'required|unique:tenants,id',
         ]);
-        //dd($data);
+        dd($data);
+       
         $user = new User();
 
         $user->name = $request->name;
