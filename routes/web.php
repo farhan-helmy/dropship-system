@@ -27,7 +27,7 @@ Route::middleware(['web'])->group(function () {
     Route::post('/login', [MainController::class, 'login'])->name('login');
     Route::get('/verify', [MainController::class, 'register'])->name('verify');
     Route::get('/verify/{id}', [MainController::class, 'verify'])->name('verifyid');
-    Route::get('/testmail', [MainController::class, 'testmail'])->name('testmail');
+    //Route::get('/testmail', [MainController::class, 'testmail'])->name('testmail');
 
     Route::middleware(['auth'])->group(function () {
         
@@ -35,7 +35,7 @@ Route::middleware(['web'])->group(function () {
             Route::get('', [DashboardController::class, 'index'])->name('index');
             Route::post('', [DashboardController::class, 'registeruser'])->name('registeruser');
 
-            Route::get('getcsv', [DashboardController::class, 'generateCsv'])->name('getcsv');
+            //Route::get('getcsv', [DashboardController::class, 'generateCsv'])->name('getcsv');
         });
         Route::post('', [MainController::class, 'destroy'])->name('logout');
     });
