@@ -39,8 +39,9 @@
                             <td class="d-flex align-items-center font-weight-bolder">
                                 <!--begin::Symbol-->
                                 <div class="symbol symbol-60 flex-shrink-0 mr-4 bg-light">
-                                    <div class="symbol-label"
-                                        style="background-image: url('/metronic/theme/html/demo1/dist/assets/media/products/11.png')">
+                                        <span class="symbol-label">
+                                            <img src="" class="h-75 align-self-end" alt="" />
+                                       
                                     </div>
                                 </div>
                                 <!--end::Symbol-->

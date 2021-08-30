@@ -55,10 +55,6 @@
                                 <span class="font-weight-bold mr-2">Location:</span>
                                 <span class="text-muted">Malaysia</span>
                             </div>
-                            <div class="d-flex align-items-center justify-content-between">
-                                <span class="font-weight-bold mr-2">Nric:</span>
-                                <span class="text-muted">{{$user->nric}}</span>
-                            </div>
                         </div>
                         <!--end::Contact-->
                         @if($user->status == 'Active')
