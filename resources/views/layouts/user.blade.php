@@ -14,7 +14,7 @@
 		<!--begin::Header-->
 		<div class="d-flex align-items-center mt-5">
 			<div class="symbol symbol-100 mr-5">
-				<div class="symbol-label" style="background-image:url('assets/media/users/300_21.jpg')"></div>
+			
 				<i class="symbol-badge bg-success"></i>
 			</div>
 			<div class="d-flex flex-column">
