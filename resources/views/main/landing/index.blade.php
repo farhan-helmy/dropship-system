@@ -184,6 +184,24 @@
             </div>
         </section><!-- End About Section -->
 
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container">
+
+                <div class="section-title" data-aos="zoom-out">
+                    <h2>Video</h2>
+                    <p>Video Guidance</p>
+                </div>
+
+                <div class="row content" data-aos="fade-up">
+                    <iframe width="315" height="560" src="https://www.youtube.com/embed/lbG3ce-odgI"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+
+            </div>
+        </section><!-- End About Section -->
         <!-- ======= Features Section ======= -->
         <section id="features" class="features">
             <div class="container">

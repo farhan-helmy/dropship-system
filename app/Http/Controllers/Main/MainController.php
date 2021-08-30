@@ -41,7 +41,7 @@ class MainController extends Controller
 
     public function testmail()
     {
-        Mail::to('aiman.kamarudin97@gmail.com')->send(new VerifyUser('testing123'));
+        Mail::to('qhkmdev90@gmail.com')->send(new VerifyUser('testing123'));
     }
 
     /**
