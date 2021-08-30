@@ -52,7 +52,7 @@ class MainController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate([
+        $request->validate([
             'name' => 'required|string',
             'email' => 'required|email|unique:users,email',
             'phone_no' => 'required',
@@ -60,8 +60,8 @@ class MainController extends Controller
             'domainname' => 'required|unique:users,domain_name',
             'domainname' => 'required|unique:tenants,id',
         ]);
-        dd($data);
-       
+        //dd($data);
+
         $user = new User();
 
         $user->name = $request->name;
@@ -93,7 +93,7 @@ class MainController extends Controller
 
         //dd($user);
         return redirect()->route('login')
-        ->with('success', 'Email verified please login.');
+            ->with('success', 'Email verified please login.');
     }
 
     public function login(Request $request)
@@ -127,9 +127,9 @@ class MainController extends Controller
         Auth::logout();
 
         $request->session()->invalidate();
-    
+
         $request->session()->regenerateToken();
-    
+
         return redirect()->route('index');
     }
 
@@ -166,5 +166,4 @@ class MainController extends Controller
     {
         //
     }
-
 }
