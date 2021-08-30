@@ -24,7 +24,6 @@ class DropshipController extends Controller
         $dropshipper = $builder->columns([
             ['data' => 'name', 'name' => 'name', 'title' => 'Name'],
             ['data' => 'email', 'name' => 'email', 'title' => 'Email'],
-            ['data' => 'nric', 'name' => 'nric', 'title' => 'NRIC'],
             ['data' => 'status', 'name' => 'status', 'title' => 'Status'],
             ['data' => 'created_at', 'name' => 'created_at', 'title' => 'Register Date'],
             [
@@ -83,7 +82,6 @@ class DropshipController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'nric' => 'required|unique:users|max:12|min:12',
             'email' => 'required|unique:users'  
         ]);
 
@@ -91,7 +89,7 @@ class DropshipController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->phone_no = $request->phone_no;
-        $user->nric = $request->nric;
+        $user->nric = 1234;
         $user->password = Hash::make($request->password);
         $user->status = 'Active';
         $user->assignRole('ds');
