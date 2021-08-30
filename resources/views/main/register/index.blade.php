@@ -152,28 +152,28 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <div class="form-group">
                                     <input
                                         class="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6"
-                                        type="text" placeholder="Nama Penuh" name="name" autocomplete="off" />
+                                        type="text" placeholder="Nama Penuh" name="name" autocomplete="off" value="{{ old('name') }}" />
                                 </div>
                                 <!--end::Form group-->
                                 <!--begin::Form group-->
                                 <div class="form-group">
                                     <input
                                         class="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6"
-                                        type="email" placeholder="Email" name="email" autocomplete="off" />
+                                        type="email" placeholder="Email" name="email" autocomplete="off" value="{{ old('email') }}" />
                                 </div>
                                 <!--end::Form group-->
                                 <!--begin::Form group-->
                                 <div class="form-group">
                                     <input
                                         class="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6"
-                                        type="email" placeholder="Phone number" name="phone_no" autocomplete="off" />
+                                        type="email" placeholder="Phone number" name="phone_no" autocomplete="off" value="{{ old('phone_no') }}" />
                                 </div>
                                 <!--end::Form group-->
                                 <!--begin::Form group-->
                                 <div class="form-group">
                                     <input
                                         class="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6"
-                                        type="password" placeholder="Password" name="password" autocomplete="off" />
+                                        type="password" placeholder="Password" name="password" autocomplete="off" value="{{ old('password') }}" />
                                 </div>
                                 <!--end::Form group-->
                                 <!--begin::Form group-->
@@ -188,7 +188,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <input
                                         class="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6"
                                         type="text" placeholder="Isi nama kedai anda" name="domainname"
-                                        autocomplete="off" />
+                                        autocomplete="off" value="{{ old('domainname') }}" />
                                 </div>
                                 <!--end::Form group-->
                                 <!--begin::Form group-->
