@@ -55,7 +55,16 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $request->validate([
+            'receipt' => 'required',
+            'name' => 'required',
+            'phoneno' => 'required',
+            'address1' => 'required',
+            'postcode' => 'required',
+            'bandar' => 'required',
+            'negeri' => 'required',
+        ]);
+    
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
 
