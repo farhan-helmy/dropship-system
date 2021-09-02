@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
 
 class MainController extends Controller
 {
@@ -52,13 +53,17 @@ class MainController extends Controller
      */
     public function store(Request $request)
     {
+        Validator::extend('without_spaces', function($attr, $value){
+            return preg_match('/^\S*$/u', $value);
+        });
+
         $request->validate([
             'name' => 'required|string',
             'email' => 'required|email|unique:users,email',
             'phone_no' => 'required',
             'password' => 'required|min:8',
-            'domainname' => 'required|unique:users,domain_name',
-            'domainname' => 'required|unique:tenants,id',
+            'domainname' => 'required|unique:users,domain_name|without_spaces',
+            'domainname' => 'required|unique:tenants,id|without_spaces',
         ]);
         //dd($data);
 
