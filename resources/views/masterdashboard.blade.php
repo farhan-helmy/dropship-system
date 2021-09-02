@@ -17,17 +17,7 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('dashboardassets/dist/css/adminlte.min.css') }}">
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SYM90JZ2CY"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'G-SYM90JZ2CY');
-    </script>
+    
 </head>
 <!--
 `body` tag options:

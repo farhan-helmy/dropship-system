@@ -31,6 +31,20 @@
     <!-- Template Main CSS File -->
     <link href="{{ asset('mainassets/css/style.css') }}" rel="stylesheet">
 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SYM90JZ2CY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-SYM90JZ2CY');
+    </script>
+
+
+
     <!-- =======================================================
   * Template Name: Selecao - v4.3.0
   * Template URL: https://bootstrapmade.com/selecao-bootstrap-template/
