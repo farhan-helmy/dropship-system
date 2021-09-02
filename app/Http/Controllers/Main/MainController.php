@@ -105,6 +105,13 @@ class MainController extends Controller
 
         $user = User::where('email', $request->email)->first();
 
+        if (!$user)
+        {
+            return back()->withErrors([
+                'email' => 'Pengguna tidak wujud.',
+            ]);
+        }
+
         if ($user->status == 'unverified') {
             return back()->withErrors([
                 'email' => 'Email tidak di verifikasi, sila semak email.',
