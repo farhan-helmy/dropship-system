@@ -10,6 +10,7 @@ composer install --no-interaction --no-dev --prefer-dist
 # --prefer-dist  Forces installation from package dist even for dev versions.
 # update database
 php artisan migrate --force
+php artisan tenants:migrate
 # --force  Required to run when in production.
 # stop maintenance mode
 sudo php artisan up
